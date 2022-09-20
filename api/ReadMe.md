@@ -23,7 +23,7 @@ Instalación y resumen del back-end del challenge de Alkemy para Full Stack Deve
     Endpoint para el registro de usuarios.
     body: email, password
 
-### POST /user/signup
+### POST /user/signin
 
     Endpoint para el inicio de sesión de un usuario
     body: email, password
