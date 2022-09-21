@@ -1,6 +1,6 @@
 const { Router } = require('express');
 
-const { createOperation, updateOperation } = require('./controllers/operationController.js');
+const { createOperation, updateOperation, getAllOperation } = require('./controllers/operationController.js');
 
 
 
@@ -8,6 +8,8 @@ const { createOperation, updateOperation } = require('./controllers/operationCon
 
 
 const operationRoutes = Router()
+
+operationRoutes.get('/', getAllOperation)
 
 operationRoutes.post('/', createOperation)
 
