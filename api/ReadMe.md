@@ -30,6 +30,10 @@ Instalación y resumen del back-end del challenge de Alkemy para Full Stack Deve
 
 ## Operaciones
 
+### GET /operation
+
+    Endpoint que devuelve todos los registros de operaciones
+
 ### GET /operation/total
 
     Endpoint para obtener el balance total de ingresos y egresos.
