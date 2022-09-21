@@ -83,11 +83,32 @@ const getLastRecords = async (req, res) => {
     }
 }
 
+const getTotal = async (req, res) => {
+    try {
+        const income = await Operation.findAll({ where: { type: 'ingreso' } })
+        const expenses = await Operation.findAll({ where: { type: 'egreso' } })
+
+        let totalIncome = 0
+        let totalExpenses = 0
+
+        income.forEach(val => totalIncome += val.mount)
+        expenses.forEach(val => totalExpenses += val.mount)
+
+        const total = totalIncome - totalExpenses
+
+        return res.json({ total: total })
+
+    } catch (err) {
+        return res.status(400).json({ error: err.message })
+    }
+}
+
 module.exports = {
     createOperation,
     updateOperation,
     getAllOperation,
     getByType,
     getByCategory,
-    getLastRecords
+    getLastRecords,
+    getTotal
 }
