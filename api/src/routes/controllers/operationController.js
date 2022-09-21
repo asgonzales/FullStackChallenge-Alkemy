@@ -44,15 +44,25 @@ const getAllOperation = async (req, res) => {
         const allOperations = await Operation.findAll()
 
         return res.json(allOperations)
-        
+
     } catch (err) {
         return res.status(400).json({error: err.message})
     }
 
 }
+const getByType = async (req, res) => {
+    const { type } = req.params
+    try {
+        const operations = await Operation.findAll({ where: { type: type } })
+        return res.json(operations)
+    } catch (err) {
+        return res.status(400).json({ error: err.message })
+    }
+}
 
 module.exports = {
     createOperation,
     updateOperation,
-    getAllOperation
+    getAllOperation,
+    getByType
 }
