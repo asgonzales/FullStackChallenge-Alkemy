@@ -70,10 +70,24 @@ const getByCategory = async (req, res) => {
         return res.status(400).json({ error: err.message })
     }
 }
+
+const getLastRecords = async (req, res) => {
+    try {
+        const operations = await Operation.findAll({
+            limit: 10,
+            order: [['id', 'desc']]
+        })
+        return res.json(operations)
+    } catch (err) {
+        return res.status(400).json({ error: err.message })
+    }
+}
+
 module.exports = {
     createOperation,
     updateOperation,
     getAllOperation,
     getByType,
-    getByCategory
+    getByCategory,
+    getLastRecords
 }
