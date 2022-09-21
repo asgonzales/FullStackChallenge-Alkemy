@@ -7,7 +7,8 @@ const {
     getByType,
     getByCategory,
     getLastRecords,
-    getTotal 
+    getTotal,
+    deleteOperation
 } = require('./controllers/operationController.js');
 
 
@@ -23,6 +24,8 @@ operationRoutes.post('/', createOperation)
 
 operationRoutes.put('/', updateOperation)
 
+operationRoutes.delete('/', deleteOperation)
+
 operationRoutes.get('/type/:type', getByType)
 
 operationRoutes.get('/category/:categoryId', getByCategory)
@@ -30,6 +33,7 @@ operationRoutes.get('/category/:categoryId', getByCategory)
 operationRoutes.get('/lastrecords', getLastRecords)
 
 operationRoutes.get('/total', getTotal)
+
 
 module.exports = {
     operationRoutes

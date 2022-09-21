@@ -103,6 +103,18 @@ const getTotal = async (req, res) => {
     }
 }
 
+const deleteOperation = async (req, res) => {
+    const { operationId } = req.body
+
+    try {
+        await Operation.update({ isActive: 'false'}, { where: { id: operationId } })
+        const delOperation = await Operation.findOne({where: { id: operationId } })
+        return res.json(delOperation)
+    } catch (err) {
+        return res.status({ error: err.message })
+    }
+}
+
 module.exports = {
     createOperation,
     updateOperation,
@@ -110,5 +122,6 @@ module.exports = {
     getByType,
     getByCategory,
     getLastRecords,
-    getTotal
+    getTotal,
+    deleteOperation
 }
