@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { operationsRoutes } = require('./operationsRoutes.js');
+const { operationRoutes } = require('./operationsRoutes.js');
 const { userRoutes } = require('./userRoutes.js')
 
 
@@ -10,7 +10,7 @@ const { userRoutes } = require('./userRoutes.js')
 
 const routes = Router();
 
-// routes.use('/operation', operationsRoutes)
+routes.use('/operation', operationRoutes)
 routes.use('/user', userRoutes)
 
 
