@@ -1,6 +1,6 @@
 const { Router } = require('express');
 
-const { createOperation, updateOperation, getAllOperation, getByType } = require('./controllers/operationController.js');
+const { createOperation, updateOperation, getAllOperation, getByType, getByCategory } = require('./controllers/operationController.js');
 
 
 
@@ -17,6 +17,7 @@ operationRoutes.put('/', updateOperation)
 
 operationRoutes.get('/type/:type', getByType)
 
+operationRoutes.get('/category/:categoryId', getByCategory)
 
 module.exports = {
     operationRoutes

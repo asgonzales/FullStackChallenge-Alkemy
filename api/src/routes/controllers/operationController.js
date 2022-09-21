@@ -50,6 +50,7 @@ const getAllOperation = async (req, res) => {
     }
 
 }
+
 const getByType = async (req, res) => {
     const { type } = req.params
     try {
@@ -60,9 +61,19 @@ const getByType = async (req, res) => {
     }
 }
 
+const getByCategory = async (req, res) => {
+    const { categoryId } = req.params
+    try {
+        const operations = await Operation.findAll({ where: { categoryId: categoryId } })
+        return res.json(operations)
+    } catch (err) {
+        return res.status(400).json({ error: err.message })
+    }
+}
 module.exports = {
     createOperation,
     updateOperation,
     getAllOperation,
-    getByType
+    getByType,
+    getByCategory
 }
