@@ -13,7 +13,7 @@ export default function History () {
 
 
     return (
-        <div>
+        <div className={style.contHistory}>
             SOY EL HISTORY
         </div>
     )
