@@ -65,3 +65,14 @@ Instalación y resumen del back-end del challenge de Alkemy para Full Stack Deve
 
     Endpoint para el borrado lógico de una operación
     body: operationId
+
+## Categorias
+
+### POST /category
+
+    Endpoint para la creación de categorias
+    body: name
+
+### GET /category
+
+    Endpoint para obtener todas las categorías
