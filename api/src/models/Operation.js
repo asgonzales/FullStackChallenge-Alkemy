@@ -20,8 +20,9 @@ module.exports = (sequelize) => {
         type: {
             type: DataTypes.STRING
         },
-        active: {
-            type: DataTypes.ENUM('true', 'false')
+        isActive: {
+            type: DataTypes.ENUM('true', 'false'),
+            defaultValue: 'true'
         }
     }, {
         timestamps: false

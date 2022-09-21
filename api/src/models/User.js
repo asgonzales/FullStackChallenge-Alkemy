@@ -13,6 +13,10 @@ module.exports = (sequelize) => {
         },
         password: {
             type: DataTypes.STRING
+        },
+        isActive: {
+            type: DataTypes.ENUM('true', 'false'),
+            defaultValue: 'true'
         }
     }, {
         timestamps: false
