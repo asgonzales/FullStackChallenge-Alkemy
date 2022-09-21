@@ -18,11 +18,11 @@ category(sequelize);
 //Defino las relaciones entre los modelos
 const { User, Operation, Category } = sequelize.models
 
-Operation.hasOne(User, {foreignKey: 'id'})
-User.belongsTo(Operation, {foreignKey: 'id'})
+User.hasMany(Operation, {foreignKey: 'userId', as: 'operationId'})
+Operation.belongsTo(User, {foreignKey: 'userId'})
 
-Operation.hasOne(Category, {foreignKey: 'id'})
-Category.belongsTo(Operation, {foreignKey: 'id'})
+Category.hasMany(Operation, {foreignKey: 'categoryId', as: 'operationId'})
+Operation.belongsTo(Category, {foreignKey: 'categoryId'})
 
 
 

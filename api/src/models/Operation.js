@@ -6,6 +6,7 @@ module.exports = (sequelize) => {
     sequelize.define('Operation', {
         id: {
             type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV4,
             primaryKey: true
         },
         concept: {
