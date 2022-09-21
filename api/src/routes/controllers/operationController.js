@@ -41,7 +41,7 @@ const getAllOperation = async (req, res) => {
 
     try {
         
-        const allOperations = await Operation.findAll()
+        const allOperations = await Operation.findAll({ where: { isActive: 'true' } })
 
         return res.json(allOperations)
 
@@ -54,7 +54,7 @@ const getAllOperation = async (req, res) => {
 const getByType = async (req, res) => {
     const { type } = req.params
     try {
-        const operations = await Operation.findAll({ where: { type: type } })
+        const operations = await Operation.findAll({ where: { type: type, isActive: 'true' } })
         return res.json(operations)
     } catch (err) {
         return res.status(400).json({ error: err.message })
@@ -64,7 +64,7 @@ const getByType = async (req, res) => {
 const getByCategory = async (req, res) => {
     const { categoryId } = req.params
     try {
-        const operations = await Operation.findAll({ where: { categoryId: categoryId } })
+        const operations = await Operation.findAll({ where: { categoryId: categoryId, isActive: 'true' } })
         return res.json(operations)
     } catch (err) {
         return res.status(400).json({ error: err.message })
@@ -75,6 +75,7 @@ const getLastRecords = async (req, res) => {
     try {
         const operations = await Operation.findAll({
             limit: 10,
+            where: { isActive: 'true' },
             order: [['id', 'desc']]
         })
         return res.json(operations)
@@ -85,8 +86,8 @@ const getLastRecords = async (req, res) => {
 
 const getTotal = async (req, res) => {
     try {
-        const income = await Operation.findAll({ where: { type: 'ingreso' } })
-        const expenses = await Operation.findAll({ where: { type: 'egreso' } })
+        const income = await Operation.findAll({ where: { type: 'ingreso', isActive: 'true' } })
+        const expenses = await Operation.findAll({ where: { type: 'egreso', isActive: 'true' } })
 
         let totalIncome = 0
         let totalExpenses = 0
