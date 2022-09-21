@@ -4,6 +4,9 @@ const { conn } = require('./src/db.js');
 
 
 
+// const { Operation } = require('./src/db.js');
+
+// Operation.sync({force: true})
 
 
 conn.sync({force: false}).then(() => {
