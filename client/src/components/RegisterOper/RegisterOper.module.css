@@ -1,0 +1,50 @@
+.backgroundCont {
+    height: 100vh;
+    width: 100%;
+    /* background-color: grey; */
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+.contRegisterOper {
+    /* border: 1px solid red; */
+    background-color: white;
+    border-radius: 10px;
+    width: 90%;
+    height: 34rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.form {
+    /* border: 1px solid green; */
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.form > input, .form > select {
+    border-radius: 10px;
+    padding: .5rem;
+    /* border: 1px solid red; */
+    outline: none;
+    width: 90%;
+    font-family: 'Nunito';
+    font-size: 1.5em;
+}
+.cancelButton {
+    border: none;
+    text-decoration: underline;
+    background-color: transparent;
+    font-family: 'Nunito';
+    font-size: 2em;
+}
