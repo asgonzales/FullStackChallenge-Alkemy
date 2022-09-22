@@ -3,7 +3,7 @@ import axios from 'axios';
 export const REGISTER_USER = 'REGISTER_USER';
 export const LOGIN_USER = 'LOGIN_USER';
 export const GET_LAST_RECORDS = 'GET_LAST_RECORDS';
-
+export const GET_BALANCE = 'GET_BALANCE';
 
 
 
@@ -63,6 +63,25 @@ export const getLastRecords = () => {
                     payload: response.data
                 })
                 console.log('LastRecords success')
+            })
+        } catch (err) {
+            console.log(err.message)
+        }
+    }
+}
+export const getBalance = () => {
+    return (dispatch) => {
+        try {
+            axios({
+                method: 'GET',
+                url: `${BASE_URL}/operation/total`
+            })
+            .then(response => {
+                dispatch({
+                    type: GET_BALANCE,
+                    payload: response.data
+                })
+                console.log('getBalance success :D', response.data)
             })
         } catch (err) {
             console.log(err.message)
