@@ -41,7 +41,10 @@ const getAllOperation = async (req, res) => {
 
     try {
         
-        const allOperations = await Operation.findAll({ where: { isActive: 'true' } })
+        const allOperations = await Operation.findAll({
+            where: { isActive: 'true' },
+            include: { model: Category }
+        })
 
         return res.json(allOperations)
 
@@ -54,7 +57,10 @@ const getAllOperation = async (req, res) => {
 const getByType = async (req, res) => {
     const { type } = req.params
     try {
-        const operations = await Operation.findAll({ where: { type: type, isActive: 'true' } })
+        const operations = await Operation.findAll({
+            where: { type: type, isActive: 'true' },
+            include: { model: Category }
+        })
         return res.json(operations)
     } catch (err) {
         return res.status(400).json({ error: err.message })
@@ -64,7 +70,10 @@ const getByType = async (req, res) => {
 const getByCategory = async (req, res) => {
     const { categoryId } = req.params
     try {
-        const operations = await Operation.findAll({ where: { categoryId: categoryId, isActive: 'true' } })
+        const operations = await Operation.findAll({
+            where: { categoryId: categoryId, isActive: 'true' },
+            include: { model: Category }
+        })
         return res.json(operations)
     } catch (err) {
         return res.status(400).json({ error: err.message })
@@ -76,6 +85,7 @@ const getLastRecords = async (req, res) => {
         const operations = await Operation.findAll({
             limit: 10,
             where: { isActive: 'true' },
+            include: { model: Category },
             order: [['id', 'desc']]
         })
         return res.json(operations)
