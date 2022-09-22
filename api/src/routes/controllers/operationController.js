@@ -60,27 +60,25 @@ const getAllOperation = async (req, res) => {
 
 }
 
-const getByType = async (req, res) => {
-    const { type } = req.params
-    try {
-        const operations = await Operation.findAll({
-            where: { type: type, isActive: 'true' },
-            include: { model: Category }
-        })
-        return res.json(operations)
-    } catch (err) {
-        return res.status(400).json({ error: err.message })
-    }
-}
+const getByFilter = async (req, res) => {
+    const { type, categoryId } = req.query
+    const { token } = req.headers
+    let whereCond = {}
 
-const getByCategory = async (req, res) => {
-    const { categoryId } = req.params
     try {
+
+        if(!!type) whereCond = { ...whereCond, type: type}
+        if(!!categoryId) whereCond = { ...whereCond, categoryId: categoryId}
+        
         const operations = await Operation.findAll({
-            where: { categoryId: categoryId, isActive: 'true' },
+            where: {
+                ...whereCond,
+                isActive: 'true',
+                userId: jwt.verify(token, KEY_JWT).id
+            },
             include: { model: Category }
         })
-        return res.json(operations)
+        return res.status(200).json(operations)
     } catch (err) {
         return res.status(400).json({ error: err.message })
     }
@@ -138,9 +136,8 @@ module.exports = {
     createOperation,
     updateOperation,
     getAllOperation,
-    getByType,
-    getByCategory,
     getLastRecords,
     getTotal,
-    deleteOperation
+    deleteOperation,
+    getByFilter
 }

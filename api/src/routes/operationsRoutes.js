@@ -4,11 +4,10 @@ const {
     createOperation,
     updateOperation,
     getAllOperation,
-    getByType,
-    getByCategory,
     getLastRecords,
     getTotal,
-    deleteOperation
+    deleteOperation,
+    getByFilter
 } = require('./controllers/operationController.js');
 
 
@@ -26,9 +25,7 @@ operationRoutes.put('/', updateOperation)
 
 operationRoutes.delete('/', deleteOperation)
 
-operationRoutes.get('/type/:type', getByType)
-
-operationRoutes.get('/category/:categoryId', getByCategory)
+operationRoutes.get('/filter', getByFilter)
 
 operationRoutes.get('/lastrecords', getLastRecords)
 
