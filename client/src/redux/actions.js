@@ -22,6 +22,7 @@ export const registerUser = (email, password) => {
                     type: REGISTER_USER,
                     payload: response.data
                 })
+                console.log('Usuario registrado :D')
             })
         } catch (err) {
             console.log(err.message)
