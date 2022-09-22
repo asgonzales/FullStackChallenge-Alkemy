@@ -1,7 +1,7 @@
 const { User } = require('../../db.js');
 const jwt = require('jsonwebtoken');
 const { KEY_JWT } = process.env;
-
+const bcrypt = require('bcrypt');
 
 
 
@@ -12,8 +12,10 @@ const registerUser = async (req, res) => {
     try {
         const exist = await User.findOne({where: {email: email}})
         if(exist) return res.status(400).json({error: 'User already exist'})
-    
-        const userCreated = await User.create({email, password})
+        
+        const passCrypt = bcrypt.hashSync(password, 10);
+
+        await User.create({email, password: passCrypt})
     
         return res.status(200).json({register: true})
 
@@ -28,12 +30,13 @@ const loginUser = async (req, res) => {
     try {
         const user = await User.findOne({where: {email: email}})
         if(!user) return res.status(400).json({error: 'The user does not exist'})
-        
-        //Crear Token
-        const token = jwt.sign({id: user.id}, KEY_JWT, {expiresIn: '1h'})
-        if(user.password === password) return res.status(200).json({ token: token})
-        else return res.status(400).json({error: 'Incorrect password'})
 
+        if(bcrypt.compareSync(password, user.password)) {
+            //Crear Token
+            const token = jwt.sign({id: user.id}, KEY_JWT, {expiresIn: '1h'})
+            return res.status(200).json({ token: token})
+        }
+        else return res.status(400).json({error: 'Incorrect password'})
 
     } catch(err) {
         return res.status(400).json({error: err.message})
