@@ -1,6 +1,6 @@
 const { User } = require('../../db.js');
-
-
+const jwt = require('jsonwebtoken');
+const { KEY_JWT } = process.env;
 
 
 
@@ -28,9 +28,13 @@ const loginUser = async (req, res) => {
     try {
         const user = await User.findOne({where: {email: email}})
         if(!user) return res.status(400).json({error: 'The user does not exist'})
-
-        if(user.password === password) return res.json(user)
+        
+        //Crear Token
+        const token = jwt.sign({pass: user.id}, KEY_JWT, {expiresIn: '1h'})
+        if(user.password === password) return res.status(200).json({ token: token})
         else return res.status(400).json({error: 'Incorrect password'})
+
+
     } catch(err) {
         return res.status(400).json({error: err.message})
     }
