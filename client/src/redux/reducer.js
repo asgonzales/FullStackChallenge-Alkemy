@@ -1,10 +1,11 @@
-import { REGISTER_USER } from "./actions"
+import { REGISTER_USER, LOGIN_USER } from "./actions"
 
 
 
 
 const initialState = {
-    userReg: ''
+    userReg: '',
+    userLog: ''
 }
 
 
@@ -14,6 +15,10 @@ export const reducer = (state = initialState, action) => {
         case REGISTER_USER: return {
             ...state,
             userReg: action.payload
+        }
+        case LOGIN_USER: return {
+            ...state,
+            userLog: action.payload
         }
             
     
