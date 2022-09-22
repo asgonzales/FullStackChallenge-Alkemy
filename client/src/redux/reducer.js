@@ -1,11 +1,16 @@
-import { REGISTER_USER, LOGIN_USER } from "./actions"
+import {
+    REGISTER_USER,
+    LOGIN_USER,
+    GET_LAST_RECORDS
+} from "./actions"
 
 
 
 
 const initialState = {
     userReg: '',
-    userLog: ''
+    userLog: '',
+    lastRecords: []
 }
 
 
@@ -19,6 +24,10 @@ export const reducer = (state = initialState, action) => {
         case LOGIN_USER: return {
             ...state,
             userLog: action.payload
+        }
+        case GET_LAST_RECORDS: return {
+            ...state,
+            lastRecords: action.payload
         }
             
     

@@ -2,6 +2,7 @@ import axios from 'axios';
 
 export const REGISTER_USER = 'REGISTER_USER';
 export const LOGIN_USER = 'LOGIN_USER';
+export const GET_LAST_RECORDS = 'GET_LAST_RECORDS';
 
 
 
@@ -43,6 +44,25 @@ export const loginUser = (email, password) => {
                     payload: response.data
                 })
                 console.log('Inicio de sesión :D')
+            })
+        } catch (err) {
+            console.log(err.message)
+        }
+    }
+}
+export const getLastRecords = () => {
+    return (dispatch) => {
+        try {
+            axios({
+                method: 'GET',
+                url: `${BASE_URL}/operation/lastrecords`
+            })
+            .then(response => {
+                dispatch({
+                    type: GET_LAST_RECORDS,
+                    payload: response.data
+                })
+                console.log('LastRecords success')
             })
         } catch (err) {
             console.log(err.message)
