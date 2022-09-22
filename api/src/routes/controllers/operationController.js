@@ -86,10 +86,11 @@ const getByCategory = async (req, res) => {
 }
 
 const getLastRecords = async (req, res) => {
+    const { token } = req.headers
     try {
         const operations = await Operation.findAll({
             limit: 10,
-            where: { isActive: 'true' },
+            where: { isActive: 'true', userId: jwt.verify(token, KEY_JWT).id },
             include: { model: Category },
             order: [['id', 'desc']]
         })
