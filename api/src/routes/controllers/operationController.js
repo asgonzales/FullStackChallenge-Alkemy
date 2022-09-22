@@ -101,9 +101,10 @@ const getLastRecords = async (req, res) => {
 }
 
 const getTotal = async (req, res) => {
+    const { token } = req.headers
     try {
-        const income = await Operation.findAll({ where: { type: 'ingreso', isActive: 'true' } })
-        const expenses = await Operation.findAll({ where: { type: 'egreso', isActive: 'true' } })
+        const income = await Operation.findAll({ where: { type: 'ingreso', isActive: 'true', userId: jwt.verify(token, KEY_JWT).id } })
+        const expenses = await Operation.findAll({ where: { type: 'egreso', isActive: 'true', userId: jwt.verify(token, KEY_JWT).id } })
 
         let totalIncome = 0
         let totalExpenses = 0
