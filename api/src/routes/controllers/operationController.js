@@ -43,11 +43,12 @@ const updateOperation = async (req, res) => {
 }
 
 const getAllOperation = async (req, res) => {
+    const { token } = req.headers
 
     try {
         
         const allOperations = await Operation.findAll({
-            where: { isActive: 'true' },
+            where: { isActive: 'true', userId: jwt.verify(token, KEY_JWT).id },
             include: { model: Category }
         })
 
