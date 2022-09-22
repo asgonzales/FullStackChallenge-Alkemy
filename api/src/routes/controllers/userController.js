@@ -15,7 +15,7 @@ const registerUser = async (req, res) => {
     
         const userCreated = await User.create({email, password})
     
-        return res.status(200).json(userCreated)
+        return res.status(200).json({register: true})
 
     } catch(err) {
         return res.status(404).json({error: err.message})
@@ -30,7 +30,7 @@ const loginUser = async (req, res) => {
         if(!user) return res.status(400).json({error: 'The user does not exist'})
         
         //Crear Token
-        const token = jwt.sign({pass: user.id}, KEY_JWT, {expiresIn: '1h'})
+        const token = jwt.sign({id: user.id}, KEY_JWT, {expiresIn: '1h'})
         if(user.password === password) return res.status(200).json({ token: token})
         else return res.status(400).json({error: 'Incorrect password'})
 
