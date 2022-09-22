@@ -4,7 +4,7 @@ export const REGISTER_USER = 'REGISTER_USER';
 export const LOGIN_USER = 'LOGIN_USER';
 export const GET_LAST_RECORDS = 'GET_LAST_RECORDS';
 export const GET_BALANCE = 'GET_BALANCE';
-
+export const REGISTER_OPERATION = 'REGISTER_OPERATION';
 
 
 
@@ -82,6 +82,26 @@ export const getBalance = () => {
                     payload: response.data
                 })
                 console.log('getBalance success :D', response.data)
+            })
+        } catch (err) {
+            console.log(err.message)
+        }
+    }
+}
+export const registerOperation = (operation) => {
+    return (dispatch) => {
+        try {
+            axios({
+                method: 'POST',
+                url:`${BASE_URL}/operation`,
+                data: operation
+            })
+            .then(response => {
+                dispatch({
+                    type: REGISTER_OPERATION,
+                    payload: response.data
+                })
+                console.log('REGISTEROPERATION SUCCESS', response.data)
             })
         } catch (err) {
             console.log(err.message)
