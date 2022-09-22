@@ -5,7 +5,7 @@ export const LOGIN_USER = 'LOGIN_USER';
 export const GET_LAST_RECORDS = 'GET_LAST_RECORDS';
 export const GET_BALANCE = 'GET_BALANCE';
 export const REGISTER_OPERATION = 'REGISTER_OPERATION';
-
+export const GET_CATEGORIES = 'GET_CATEGORIES';
 
 
 const BASE_URL = 'http://localhost:3001'
@@ -102,6 +102,25 @@ export const registerOperation = (operation) => {
                     payload: response.data
                 })
                 console.log('REGISTEROPERATION SUCCESS', response.data)
+            })
+        } catch (err) {
+            console.log(err.message)
+        }
+    }
+}
+export const getCategories = () => {
+    return (dispatch) => {
+        try {
+            axios({
+                method: 'GET',
+                url: `${BASE_URL}/category`
+            })
+            .then(response => {
+                dispatch({
+                    type: GET_CATEGORIES,
+                    payload: response.data
+                })
+                console.log('GETCATEGORIES', response.data)
             })
         } catch (err) {
             console.log(err.message)
