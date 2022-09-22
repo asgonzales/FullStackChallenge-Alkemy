@@ -10,7 +10,7 @@ import style from './TotalBalance.module.css';
 
 
 
-export default function () {
+export default function TotalBalance () {
     const dispatch = useDispatch()
     const totalBalance = useSelector(state => state.totalBalance)
 
