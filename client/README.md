@@ -30,7 +30,7 @@ Página de registro de usuario
 
 ## Home
 
-### /home
+### /
 
 Página principal de la aplicación. Aquí se podrá ver el balance actual y un listado de los últimos 10 reigstros de operaciones.
 Además se podrá registrar una nueva operación.
