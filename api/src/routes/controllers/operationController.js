@@ -1,6 +1,6 @@
 const { Operation, User, Category } = require('../../db.js');
-
-
+const jwt = require('jsonwebtoken');
+const { KEY_JWT } = process.env;
 
 
 
@@ -9,12 +9,17 @@ const { Operation, User, Category } = require('../../db.js');
 
 const createOperation = async (req, res) => {
 
-    const oper = { concept, mount, date, type, userId, categoryId } = req.body;
-
+    const { token } = req.headers
+    let oper = { concept, mount, date, type, categoryId } = req.body;
+    oper = {
+        ...oper,
+        userId: jwt.verify(token, KEY_JWT).id
+    }
+    
     try {
 
-        const newOperation = await Operation.create(oper)
-        return res.json(newOperation)
+        await Operation.create(oper)
+        return res.status(200).json({msg: 'Operation created'})
 
     } catch (err) {
         return res.status(400).json({error: err.message})
