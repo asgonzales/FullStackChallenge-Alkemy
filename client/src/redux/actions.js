@@ -154,3 +154,19 @@ export const getResults = (type, categoryId) => {
         }
     }
 }
+export const updateOperation = (operation) => {
+    return () => {
+        try {
+            axios({
+                method: 'PUT',
+                url: `${BASE_URL}/operation`,
+                data: operation
+            })
+            .then(response => {
+                console.log('UPDATEOPERATION', response.data)
+            })
+        } catch (err) {
+            console.log(err.message)
+        }
+    }
+}
