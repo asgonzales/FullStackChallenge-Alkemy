@@ -6,6 +6,7 @@ export const GET_LAST_RECORDS = 'GET_LAST_RECORDS';
 export const GET_BALANCE = 'GET_BALANCE';
 export const REGISTER_OPERATION = 'REGISTER_OPERATION';
 export const GET_CATEGORIES = 'GET_CATEGORIES';
+export const GET_RESULTS = 'GET_RESULTS';
 
 
 const BASE_URL = 'http://localhost:3001'
@@ -125,6 +126,28 @@ export const getCategories = () => {
                     payload: response.data
                 })
                 console.log('GETCATEGORIES', response.data)
+            })
+        } catch (err) {
+            console.log(err.message)
+        }
+    }
+}
+export const getResults = (type, categoryId) => {
+    const url = new URL(`${BASE_URL}/operation`)
+    if(!!type) url.searchParams.append('type', type)
+    if(!!categoryId) url.searchParams.append('categoryId', categoryId)
+    return (dispatch) => {
+        try {
+            axios({
+                method: 'GET',
+                url: url.href
+            })
+            .then(response => {
+                dispatch({
+                    type: GET_RESULTS,
+                    payload: response.data
+                })
+                console.log('GETRESULTS', response.data)
             })
         } catch (err) {
             console.log(err.message)
