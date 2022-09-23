@@ -1,0 +1,6 @@
+.contSearchBar {
+    width: 90%;
+    height: 5rem;
+    border: 1px solid red;
+    display: flex;
+}

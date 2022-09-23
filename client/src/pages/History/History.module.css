@@ -1,7 +1,8 @@
-.contHistoyry {
+.contHistory {
     width: 100%;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* border: 5px solid blue; */
 }

@@ -15,9 +15,9 @@ export default function ResultsOper () {
     const dispatch = useDispatch()
     const results = useSelector(state => state.results)
 
-    useEffect(() => {
-        dispatch(getResults('asd','asdasd'))
-    }, [dispatch])
+    // useEffect(() => {
+    //     dispatch(getResults('asd','asdasd'))
+    // }, [dispatch])
 
 
 
