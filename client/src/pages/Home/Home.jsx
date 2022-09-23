@@ -22,13 +22,13 @@ export default function Home () {
 
     return (
         <div className={style.contHome}>
-            <div>
+            <div className={style.divTop}>
                 <TotalBalance />
             </div>
-            <div>
+            <div className={style.divRecords}>
                 <LastRecords />
             </div>
-            <div>
+            <div className={style.divBottom}>
                 <button onClick={handlePortal}>Add Operation</button>
                 {
                     openPortal?

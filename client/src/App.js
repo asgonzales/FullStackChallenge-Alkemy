@@ -26,7 +26,7 @@ function App() {
       <Route path='/home' element={<Home />}/>
       <Route path='/history' element={<History />}/>
     </Routes>
-    <CookieConsent debug={true}>Oiga mi loco etamo usando galleticas si me entiende parse?</CookieConsent>
+    <CookieConsent >Oiga mi loco etamo usando galleticas si me entiende parse?</CookieConsent>
     <Toaster />
     </div>
   );
