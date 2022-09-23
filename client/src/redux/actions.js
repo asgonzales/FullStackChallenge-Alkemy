@@ -1,4 +1,5 @@
 import axios from 'axios';
+import toast from 'react-hot-toast';
 
 export const REGISTER_USER = 'REGISTER_USER';
 export const LOGIN_USER = 'LOGIN_USER';
@@ -13,46 +14,51 @@ const BASE_URL = 'http://localhost:3001'
 
 axios.defaults.withCredentials = true;
 
-export const registerUser = (email, password) => {
+export const registerUser = (email, password, navigate) => {
+    toast.loading('Loading', { id: 'register' })
     return (dispatch) => {
-        try {
-            axios({
-                method: 'POST',
-                url: `${BASE_URL}/user/signup`,
-                data: {email, password}
+        axios({
+            method: 'POST',
+            url: `${BASE_URL}/user/signup`,
+            data: {email, password}
+        })
+        .then(response => {
+            dispatch({
+                type: REGISTER_USER,
+                payload: response.data
             })
-            .then(response => {
-                dispatch({
-                    type: REGISTER_USER,
-                    payload: response.data
-                })
-                console.log('Usuario registrado :D')
-            })
-        } catch (err) {
-            console.log(err.message)
-        }
+            toast.dismiss('register')
+            toast.success('Please Log In')
+            navigate('/signin')
+        })
+        .catch(err => {
+            toast.dismiss('register')
+            toast.error(err.response.data.error)
+        })
     }
 }
-export const loginUser = (email, password) => {
+export const loginUser = (email, password, navigate) => {
+    toast.loading('Logging In', { id: 'login' })
     return (dispatch) => {
-        try {
-            axios({
-                method: 'POST',
-                url: `${BASE_URL}/user/signin`,
-                data: {email, password}
+        axios({
+            method: 'POST',
+            url: `${BASE_URL}/user/signin`,
+            data: {email, password}
+        })
+        .then(response => {
+            dispatch({
+                type: LOGIN_USER,
+                payload: response.data
             })
-            .then(response => {
-                dispatch({
-                    type: LOGIN_USER,
-                    payload: response.data
-                })
-                // localStorage.setItem('token', response.data.token)
-                document.cookie= `token=${response.data.token}`
-                // console.log(response.data)
-            })
-        } catch (err) {
-            console.log(err.message)
-        }
+            document.cookie= `token=${response.data.token}`
+            toast.dismiss('login')
+            toast.success('Welcome!')
+            navigate('/home')
+        })
+        .catch(err => {
+            toast.dismiss('login')
+            toast.error(err.response.data.error)
+        })
     }
 }
 export const getLastRecords = () => {

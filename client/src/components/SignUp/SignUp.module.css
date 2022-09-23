@@ -1,17 +1,17 @@
 .contSignUp {
     /* border: 1px solid red; */
     width: 90%;
-    height: 20rem;
+    height: 30rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    justify-content: space-evenly;
 }
 
 .divTitle {
     /* border: 1px solid blue; */
     width: 100%;
-    height: 30%;
+    height: 25%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,7 +21,7 @@
 
 .divForm {
     /* border: 1px solid green; */
-    height: 70%;
+    height: 65%;
     width: 100%;
 }
 
@@ -56,17 +56,24 @@
     font-family: 'Nunito';
     padding: 2% 4%;
     font-size: 1.5em;
+    background-color: var(--blue);
     transition: all 0.2s ease;
 }
-.inputButton:focus {
-    width: 80%;
-    border: none;
-    border-radius: 10px;
+.inputButton:active {
+    background-color: white;
+}
+.signin {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.linkText {
+    text-decoration: underline;
+    color: black;
+    font-size: 1.3rem;
     font-family: 'Nunito';
-    padding: 2% 4%;
-    font-size: 1.5em;
-    background-color: black;
-    color: white;
 }
 
 

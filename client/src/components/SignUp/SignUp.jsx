@@ -3,7 +3,7 @@ import style from './SignUp.module.css';
 import { useDispatch } from 'react-redux';
 import { registerUser } from '../../redux/actions';
 import { useEffect } from 'react';
-
+import { Link, useNavigate } from 'react-router-dom';
 
 
 
@@ -12,6 +12,7 @@ import { useEffect } from 'react';
 
 export default function SignUp () {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -39,8 +40,7 @@ export default function SignUp () {
 
     const submitForm = (e) => {
         e.preventDefault()
-        console.log(emailPass,passwordPass)
-        dispatch(registerUser(email, password))
+        dispatch(registerUser(email, password, navigate))
     }
 
     return (
@@ -52,12 +52,11 @@ export default function SignUp () {
                 <form onSubmit={submitForm} className={style.form}>
                     <input className={style.inputBox} id='email' type="text" placeholder='email' onChange={handleEmail}/>
                     <input className={style.inputBox} id='password' type="password" placeholder='password' onChange={handlePassword} />
-                    {/* <label id='labelError'></label> */}
                     <input id='submitButton' className={style.inputButton} type="submit" value='Sign up' disabled/>
                 </form>
             </div>
-            <div>
-
+            <div className={style.signin}>
+                <Link to='/signin' className={style.linkText}>Have an account? Log In</Link>
             </div>
         </div>
     )

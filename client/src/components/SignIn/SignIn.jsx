@@ -3,6 +3,7 @@ import style from './SignIn.module.css';
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../../redux/actions';
 import { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 
@@ -12,6 +13,7 @@ import { useEffect } from 'react';
 
 export default function SignUp () {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -39,25 +41,24 @@ export default function SignUp () {
 
     const submitForm = (e) => {
         e.preventDefault()
-        console.log(emailPass,passwordPass)
-        dispatch(loginUser(email, password))
+        dispatch(loginUser(email, password, navigate))
     }
 
     return (
         <div className={style.contSignUp}>
             <div className={style.divTitle}>
-                <h1>Sign In</h1>
+                <h1>Log In</h1>
             </div>
             <div className={style.divForm}>
                 <form onSubmit={submitForm} className={style.form}>
                     <input className={style.inputBox} id='email' type="text" placeholder='email' onChange={handleEmail}/>
                     <input className={style.inputBox} id='password' type="password" placeholder='password' onChange={handlePassword} />
                     {/* <label id='labelError'></label> */}
-                    <input id='submitButton' className={style.inputButton} type="submit" value='Sign In' disabled/>
+                    <input id='submitButton' className={style.inputButton} type="submit" value='Log In' disabled/>
                 </form>
             </div>
-            <div>
-
+            <div className={style.signup}>
+                <Link to='/signup' className={style.linkText}>Don't have an account? Sign up</Link>
             </div>
         </div>
     )
