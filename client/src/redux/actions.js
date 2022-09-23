@@ -170,3 +170,19 @@ export const updateOperation = (operation) => {
         }
     }
 }
+export const deleteOperation = (operationId) => {
+    return () => {
+        try {
+            axios({
+                method: 'DELETE',
+                url:`${BASE_URL}/operation`,
+                data: { operationId }
+            })
+            .then(response => {
+                console.log('DELETEOPERATION', response.data)
+            })
+        } catch (err) {
+            console.log(err.message)
+        }
+    }
+}
