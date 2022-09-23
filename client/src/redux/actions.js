@@ -10,6 +10,8 @@ export const GET_CATEGORIES = 'GET_CATEGORIES';
 
 const BASE_URL = 'http://localhost:3001'
 
+axios.defaults.withCredentials = true;
+
 export const registerUser = (email, password) => {
     return (dispatch) => {
         try {
@@ -43,7 +45,9 @@ export const loginUser = (email, password) => {
                     type: LOGIN_USER,
                     payload: response.data
                 })
-                console.log('Inicio de sesión :D')
+                // localStorage.setItem('token', response.data.token)
+                document.cookie= `token=${response.data.token}`
+                // console.log(response.data)
             })
         } catch (err) {
             console.log(err.message)
