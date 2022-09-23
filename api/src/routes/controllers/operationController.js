@@ -9,7 +9,7 @@ const { KEY_JWT } = process.env;
 
 const createOperation = async (req, res) => {
 
-    const { token } = req.headers
+    const { token } = req.cookies
     let oper = { concept, mount, date, type, categoryId } = req.body;
     oper = {
         ...oper,
@@ -43,7 +43,7 @@ const updateOperation = async (req, res) => {
 }
 
 const getAllOperation = async (req, res) => {
-    const { token } = req.headers
+    const { token } = req.cookies
 
     try {
         
@@ -62,7 +62,7 @@ const getAllOperation = async (req, res) => {
 
 const getByFilter = async (req, res) => {
     const { type, categoryId } = req.query
-    const { token } = req.headers
+    const { token } = req.cookies
     let whereCond = {}
 
     try {
@@ -85,7 +85,7 @@ const getByFilter = async (req, res) => {
 }
 
 const getLastRecords = async (req, res) => {
-    const { token } = req.headers
+    const { token } = req.cookies
     try {
         const operations = await Operation.findAll({
             limit: 10,
@@ -93,14 +93,14 @@ const getLastRecords = async (req, res) => {
             include: { model: Category },
             order: [['id', 'desc']]
         })
-        return res.json(operations)
+        return res.status(200).json(operations)
     } catch (err) {
         return res.status(400).json({ error: err.message })
     }
 }
 
 const getTotal = async (req, res) => {
-    const { token } = req.headers
+    const { token } = req.cookies
     try {
         const income = await Operation.findAll({ where: { type: 'ingreso', isActive: 'true', userId: jwt.verify(token, KEY_JWT).id } })
         const expenses = await Operation.findAll({ where: { type: 'egreso', isActive: 'true', userId: jwt.verify(token, KEY_JWT).id } })
@@ -113,7 +113,7 @@ const getTotal = async (req, res) => {
 
         const total = totalIncome - totalExpenses
 
-        return res.json({ total: total })
+        return res.status(200).json({ total: total })
 
     } catch (err) {
         return res.status(400).json({ error: err.message })
