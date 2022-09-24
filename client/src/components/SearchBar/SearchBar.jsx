@@ -36,22 +36,24 @@ export default function SearchBar () {
 
     return (
         <div className={style.contSearchBar}>
-            <h1>Search by:</h1>
-            <select name="type" id="type" onChange={handleType}>
-                <option hidden>Type</option>
-                <option value="ingreso">ingreso</option>
-                <option value="egreso">egreso</option>
-            </select>
-            <select name="category" id="category" onChange={handleCategory}>
-                <option hidden>Category</option>
-                {
-                    categories.length > 0 && categories.map((val, index) => {
-                        return(
-                            <option key={index} value={val.id}>{val.name}</option>
-                        )
-                    })
-                }
-            </select>
+            <h1>Filter by</h1>
+            <div>
+                <select name="type" id="type" onChange={handleType}>
+                    <option hidden>Type</option>
+                    <option value="ingreso">ingreso</option>
+                    <option value="egreso">egreso</option>
+                </select>
+                <select name="category" id="category" onChange={handleCategory}>
+                    <option hidden>Category</option>
+                    {
+                        categories.length > 0 && categories.map((val, index) => {
+                            return(
+                                <option key={index} value={val.id}>{val.name}</option>
+                            )
+                        })
+                    }
+                </select>
+            </div>
         </div>
     )
 }

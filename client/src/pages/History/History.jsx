@@ -16,8 +16,12 @@ export default function History () {
 
     return (
         <div className={style.contHistory}>
-            <SearchBar />
-            <ResultsOper />
+            <div className={style.divSearch}>
+                <SearchBar />
+            </div>
+            <div className={style.divResults}>
+                <ResultsOper />
+            </div>
         </div>
     )
 }

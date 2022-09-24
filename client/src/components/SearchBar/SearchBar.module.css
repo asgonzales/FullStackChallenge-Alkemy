@@ -1,6 +1,28 @@
 .contSearchBar {
-    width: 90%;
-    height: 5rem;
-    border: 1px solid red;
+    width: 100%;
+    height: 10rem;
+    /* border: 1px solid red; */
     display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.contSearchBar > h1 {
+    font-family: 'Nunito';
+    color: var(--primary);
+}
+.contSearchBar > div {
+    /* border: 1px solid green; */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.contSearchBar > div > select {
+    font-family: 'Nunito';
+    font-weight: 600;
+    color: var(--priFont);
+    padding: .2em;
+    border-radius: 5px;
+    outline: none;
+    text-align: center;
 }
