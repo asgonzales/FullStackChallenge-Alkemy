@@ -64,15 +64,15 @@ export default function RegisterOper ({closePortal, loadOper}) {
         <div className={style.backgroundCont}>
             <div className={style.contRegisterOper}>
                 <form onSubmit={submitForm} className={style.form}>
-                    <input name='concept' type="text" placeholder='concept' onChange={handleOper} value={operation.concept} />
-                    <input name='mount' type="number" placeholder='mount' onChange={handleOper} value={operation.mount} />
-                    <input name='date' type="date" placeholder='date' onChange={handleOper} value={operation.date} max={date} />
-                    <select name="type" id="type" onChange={handleOper} value={operation.type} disabled={loadOper?true:false}>
+                    <input className={style.input} name='concept' type="text" placeholder='concept' onChange={handleOper} value={operation.concept} />
+                    <input className={style.input} name='mount' type="number" placeholder='mount' onChange={handleOper} value={operation.mount} />
+                    <input className={style.input} name='date' type="date" placeholder='date' onChange={handleOper} value={operation.date} max={date} />
+                    <select className={style.input} name="type" id="type" onChange={handleOper} value={operation.type} disabled={loadOper?true:false}>
                         <option value="none" hidden>Select a type</option>
                         <option value="egreso">egreso</option>
                         <option value="ingreso">ingreso</option>
                     </select>
-                    <select name="categoryId" id="category" onChange={handleOper} value={operation.categoryId}>
+                    <select className={style.input} name="categoryId" id="category" onChange={handleOper} value={operation.categoryId}>
                         <option value="none" hidden>Select a category</option>
                         {
                             categories.length > 0 && categories.map((val, index )=> {
@@ -82,7 +82,7 @@ export default function RegisterOper ({closePortal, loadOper}) {
                             })
                         }
                     </select>
-                    <input type="submit" id="inputButton" value={loadOper?'Update':'Add'} disabled />
+                    <input className={style.submitButton} type="submit" id="inputButton" value={loadOper?'Update':'Add'} disabled />
                 </form>
                 <button className={style.cancelButton} onClick={closePortal}>Cancel</button>
             </div>

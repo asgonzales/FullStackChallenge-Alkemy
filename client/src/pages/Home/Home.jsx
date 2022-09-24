@@ -29,7 +29,7 @@ export default function Home () {
                 <LastRecords />
             </div>
             <div className={style.divBottom}>
-                <button onClick={handlePortal}>Add Operation</button>
+                <button className={style.newOperBtn} onClick={handlePortal}>Add Operation</button>
                 {
                     openPortal?
                     <RegisterOper closePortal={handlePortal} />

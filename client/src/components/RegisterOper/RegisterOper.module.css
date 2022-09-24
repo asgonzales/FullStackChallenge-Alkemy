@@ -1,8 +1,8 @@
 .backgroundCont {
-    height: 100vh;
+    height: 100%;
     width: 100%;
     /* background-color: grey; */
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.2);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,13 +10,15 @@
     top: 0;
     left: 0;
     z-index: 10;
+    backdrop-filter: blur(1.5px);
 }
 .contRegisterOper {
     /* border: 1px solid red; */
     background-color: white;
+    /* box-shadow: -5px 0 15px -5px var(--secFont); */
     border-radius: 10px;
     width: 90%;
-    height: 34rem;
+    height: 30rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -32,19 +34,44 @@
     justify-content: space-evenly;
 }
 
-.form > input, .form > select {
+.input{
     border-radius: 10px;
     padding: .5rem;
-    /* border: 1px solid red; */
+    border: 1px solid var(--secFont);
     outline: none;
     width: 90%;
     font-family: 'Nunito';
+    font-weight: 600;
+    font-size: 1em;
+    transition: all 0.2s ease;
+}
+.input:focus {
+    border: 1px solid var(--priFont);
+}
+.submitButton {
+    width: 90%;
+    border-radius: 10px;
+    padding: .5rem;
+    border: none;
+    background-color: var(--primary);
+    color: white;
+    font-family: 'Nunito';
+    font-weight: 800;
     font-size: 1.5em;
+    /* background-color: red; */
+}
+.submitButton:active {
+    color: var(--priFont);
+    background-color: var(--secFont);
+}
+.submitButton:disabled {
+    color: white;
+    background-color: var(--secFont);
 }
 .cancelButton {
     border: none;
     text-decoration: underline;
     background-color: transparent;
     font-family: 'Nunito';
-    font-size: 2em;
+    font-size: 1.2em;
 }
