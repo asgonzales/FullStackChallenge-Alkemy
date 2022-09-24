@@ -20,7 +20,7 @@ export default function EditOrDelete ({handlePortal, loadOper}) {
 
     const deleteOper = () => {
         console.log(loadOper)
-        dispatch(deleteOperation(loadOper.id))
+        dispatch(deleteOperation(loadOper.id, handlePortal))
     }
 
     return ReactDOM.createPortal(

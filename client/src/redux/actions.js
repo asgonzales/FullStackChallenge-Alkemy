@@ -62,8 +62,10 @@ export const loginUser = (email, password, navigate) => {
     }
 }
 export const getLastRecords = () => {
+    toast.loading('Searching records...', {
+        id: 'LastRecords'
+    })
     return (dispatch) => {
-        try {
             axios({
                 method: 'GET',
                 url: `${BASE_URL}/operation/lastrecords`
@@ -73,35 +75,44 @@ export const getLastRecords = () => {
                     type: GET_LAST_RECORDS,
                     payload: response.data
                 })
-                console.log('LastRecords success')
+                toast.dismiss('LastRecords')
+                // console.log('LastRecords success')
             })
-        } catch (err) {
-            console.log(err.message)
-        }
+            .catch (err => {
+                toast.dismiss('LastRecords')
+                toast.err(err.response.data.error)
+                // console.log(err.message)
+            })
     }
 }
 export const getBalance = () => {
+    toast.loading('Searching records...', {
+        id: 'LastRecords'
+    })
     return (dispatch) => {
-        try {
-            axios({
-                method: 'GET',
-                url: `${BASE_URL}/operation/total`
+        axios({
+            method: 'GET',
+            url: `${BASE_URL}/operation/total`
+        })
+        .then(response => {
+            dispatch({
+                type: GET_BALANCE,
+                payload: response.data
             })
-            .then(response => {
-                dispatch({
-                    type: GET_BALANCE,
-                    payload: response.data
-                })
-                console.log('getBalance success :D', response.data)
-            })
-        } catch (err) {
-            console.log(err.message)
-        }
+            toast.dismiss('LastRecords')
+            // console.log('getBalance success :D', response.data)
+        })
+        .catch(err => {
+            toast.dismiss('LastRecords')
+            toast.error(err.response.data.error)
+        })
     }
 }
 export const registerOperation = (operation, closePortal) => {
+    toast.loading('Adding new operation', {
+        id: 'registerOperation'
+    })
     return (dispatch) => {
-        try {
             axios({
                 method: 'POST',
                 url:`${BASE_URL}/operation`,
@@ -114,12 +125,15 @@ export const registerOperation = (operation, closePortal) => {
                 })
                 dispatch(getBalance())
                 dispatch(getLastRecords())
-                console.log('REGISTEROPERATION SUCCESS', response.data)
+                // console.log('REGISTEROPERATION SUCCESS', response.data)
                 closePortal()
+                toast.dismiss('registerOperation')
+                toast.success('Operation added')
             })
-        } catch (err) {
-            console.log(err.message)
-        }
+            .catch(err => {
+                toast.dismiss('registerOperation')
+                toast.error(err.response.data.error)
+            })
     }
 }
 export const getCategories = () => {
@@ -142,11 +156,13 @@ export const getCategories = () => {
     }
 }
 export const getResults = (type, categoryId) => {
+    toast.loading('Searching operations', {
+        id: 'getResults'
+    })
     const url = new URL(`${BASE_URL}/operation/filter`)
     if(!!type) url.searchParams.append('type', type)
     if(!!categoryId) url.searchParams.append('categoryId', categoryId)
     return (dispatch) => {
-        try {
             axios({
                 method: 'GET',
                 url: url.href
@@ -156,43 +172,59 @@ export const getResults = (type, categoryId) => {
                     type: GET_RESULTS,
                     payload: response.data
                 })
-                console.log('GETRESULTS', response.data)
+                toast.dismiss('getResults')
+                // console.log('GETRESULTS', response.data)
             })
-        } catch (err) {
-            console.log(err.message)
-        }
+            .catch(err => {
+                toast.dismiss('getResults')
+                toast.error(err.response.data.error)
+            })
     }
 }
 export const updateOperation = (operation, closePortal) => {
-    return () => {
-        try {
+    toast.loading('Updating operation', {
+        id: 'updateOperation'
+    })
+    return (dispatch) => {
             axios({
                 method: 'PUT',
                 url: `${BASE_URL}/operation`,
                 data: operation
             })
             .then(response => {
-                console.log('UPDATEOPERATION', response.data)
+                // console.log('UPDATEOPERATION', response.data)
+                toast.dismiss('updateOperation')
+                toast.success('operation updated')
+                dispatch(getResults())
                 closePortal()
             })
-        } catch (err) {
-            console.log(err.message)
-        }
+            .catch(err => {
+                toast.dismiss('updateOperation')
+                toast.error(err.response.data.error)
+            })
     }
 }
-export const deleteOperation = (operationId) => {
-    return () => {
-        try {
+export const deleteOperation = (operationId, closePortal) => {
+    toast.loading('Deleting operation', {
+        id: 'deleteOperation'
+    })
+    return (dispatch) => {
             axios({
                 method: 'DELETE',
                 url:`${BASE_URL}/operation`,
                 data: { operationId }
             })
             .then(response => {
-                console.log('DELETEOPERATION', response.data)
+                // console.log('DELETEOPERATION', response.data)
+                toast.dismiss('deleteOperation')
+                toast.success('Operation deleted')
+                dispatch(getResults())
+                closePortal()
             })
-        } catch (err) {
-            console.log(err.message)
-        }
+            .catch(err => {
+                toast.dismiss('deleteOperation')
+                
+                toast.error(err.response.data.error)
+            })
     }
 }
