@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getResults } from '../../redux/actions';
+// import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+// import { getResults } from '../../redux/actions';
 import CardOper from '../CardOper/CardOper';
 import style from './ResultsOper.module.css';
 
@@ -12,7 +12,7 @@ import style from './ResultsOper.module.css';
 
 
 export default function ResultsOper () {
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
     const results = useSelector(state => state.results)
 
     // useEffect(() => {

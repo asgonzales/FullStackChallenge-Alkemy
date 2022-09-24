@@ -24,16 +24,16 @@ export default function SearchBar () {
 
     const handleType = (e) => {
         setType(e.target.value)
-        dispatch(getResults(e.target.value, category))
+        // dispatch(getResults(e.target.value, category))
     }
     const handleCategory = (e) => {
         setCategory(e.target.value)
-        dispatch(getResults(type, e.target.value))
+        // dispatch(getResults(type, e.target.value))
     }
 
-    // useEffect(() => {
-    //     dispatch(getResults(type, category))
-    // }, [type, category])
+    useEffect(() => {
+        dispatch(getResults(type, category))
+    }, [type, category, dispatch])
 
 
     return (

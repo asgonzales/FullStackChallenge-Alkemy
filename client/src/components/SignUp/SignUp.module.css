@@ -78,7 +78,7 @@
 }
 .linkText {
     text-decoration: underline;
-    color: black;
+    color: var(--priFont);
     font-size: 1.3rem;
     font-family: 'Nunito';
 }
