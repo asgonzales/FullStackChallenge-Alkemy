@@ -26,11 +26,11 @@ export default function EditOrDelete ({handlePortal, loadOper}) {
     return ReactDOM.createPortal(
         <div className={style.backgroundEditOrDelete}>
             <div className={style.contEditOrDelete}>
-                <button onClick={handleNewPortal}>Edit</button>
-                <button onClick={deleteOper}>Delete</button>
-            </div>
-            <div>
-                <button onClick={handlePortal}>Close</button>
+                <div>
+                    <button onClick={deleteOper}>Delete</button>
+                    <button onClick={handleNewPortal}>Edit</button>
+                </div>
+                    <button onClick={handlePortal}>Close</button>
             </div>
             {
                 editPortal ?

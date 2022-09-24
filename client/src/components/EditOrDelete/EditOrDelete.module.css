@@ -1,17 +1,50 @@
 .backgroundEditOrDelete {
     width: 100%;
     height: 100vh;
-    background-color: rgba(12, 76, 19, 0.3);
+    background-color: rgba(0, 0, 0, 0.2);
     position: absolute;
     top: 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 2;
+    backdrop-filter: blur(1px);
 }
 .contEditOrDelete {
+    background-color: white;
     width: 90%;
-    height: 20rem;
+    border-radius: 10px;
+    height: 6rem;
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
+    /* padding: 1rem 0; */
+}
+.contEditOrDelete > div {
+    /* border: 1px solid red; */
+    margin-top: .5rem;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.contEditOrDelete > div > button {
+    border: none;
+    border-radius: 5px;
+    background-color: var(--primary);
+    padding: .5em 1em;
+    color: white;
+    font-weight: 600;
+    font-size: 1em;
+    font-family: 'Nunito';
+}
+.contEditOrDelete > button {
+    /* border: 1px solid red; */
+    border: none;
+    padding: .2em 1em;
+    background-color: transparent;
+    font: 400 1em 'Nunito';
+    text-decoration: underline;
 }

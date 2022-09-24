@@ -22,6 +22,21 @@
     width: 10%;
     /* border: 1px solid blue; */
 }
+.editDiv > button {
+    font-family: 'Nunito';
+    font-weight: 600;
+    /* font-size: .8em; */
+    color: white;
+    background-color: var(--primary);
+    border: none;
+    border-radius: 5px;
+    padding: .5em .7em;
+    transition: all 0.2s ease;
+}
+.editDiv > button:active {
+    color: white;
+    background-color: var(--secFont);
+}
 .dataDiv {
     /* border: 1px solid blue; */
     display: flex;
