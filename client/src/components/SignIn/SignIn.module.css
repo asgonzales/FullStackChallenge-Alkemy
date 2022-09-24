@@ -17,6 +17,7 @@
     align-items: center;
     font-family: 'Nunito';
     font-size: 2em;
+    color: var(--primary);
 }
 
 .divForm {
@@ -57,10 +58,16 @@
     padding: 2% 4%;
     font-size: 1.5em;
     transition: all 0.2s ease;
-    background-color: var(--blue);
+    background-color: var(--primary);
+    color: white;
+}
+.inputButton:disabled {
+    color: white;
+    background-color: var(--secFont);
 }
 .inputButton:active {
-    background-color: white;
+    color: var(--priFont);
+    background-color: var(--secFont);
 }
 .signup {
     width: 100%;

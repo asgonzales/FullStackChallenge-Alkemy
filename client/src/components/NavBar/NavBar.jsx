@@ -18,13 +18,13 @@ export default function NavBar () {
 
     return (
         <div className={style.contNavBar}>
-            <button onClick={handleNavBar} >OpenNavBar</button>
+            <button className={style.navButton} onClick={handleNavBar} >Menu</button>
             {
                 openNavBar &&
                 <div className={style.backgroundNavBar}>
                     <div onClick={handleNavBar} className={style.closeDiv}></div>
                     <div className={style.contMenu}>
-                        <Link className={style.link} to='/'>Home</Link>
+                        <Link className={style.link} to='/home'>Home</Link>
                         <Link className={style.link} to='/history'>History</Link>
                         <button>Sign Out</button>
                     </div>

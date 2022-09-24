@@ -20,7 +20,8 @@ export default function TotalBalance () {
 
     return (
         <div className={style.contTotalBalance}>
-            <h1>Total: {totalBalance.total}</h1>
+            <h4>Total</h4>
+            <h1>$ {Number(totalBalance.total).toLocaleString('ca')}</h1>
         </div>
     )
 }
