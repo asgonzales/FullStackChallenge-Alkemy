@@ -61,7 +61,7 @@
     font-size: .7em;
 }
 .mountDiv {
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     width: 25%;
     display: flex;
     justify-content: center;
