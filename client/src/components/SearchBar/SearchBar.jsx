@@ -20,18 +20,20 @@ export default function SearchBar () {
 
     useEffect(() => {
         dispatch(getCategories())
-    }, [])
+    }, [dispatch])
 
     const handleType = (e) => {
         setType(e.target.value)
+        dispatch(getResults(e.target.value, category))
     }
     const handleCategory = (e) => {
         setCategory(e.target.value)
+        dispatch(getResults(type, e.target.value))
     }
 
-    useEffect(() => {
-        dispatch(getResults(type, category))
-    }, [type, category])
+    // useEffect(() => {
+    //     dispatch(getResults(type, category))
+    // }, [type, category])
 
 
     return (
@@ -40,11 +42,13 @@ export default function SearchBar () {
             <div>
                 <select name="type" id="type" onChange={handleType}>
                     <option hidden>Type</option>
+                    <option value=''>Todos</option>
                     <option value="ingreso">ingreso</option>
                     <option value="egreso">egreso</option>
                 </select>
                 <select name="category" id="category" onChange={handleCategory}>
                     <option hidden>Category</option>
+                    <option value=''>Todos</option>
                     {
                         categories.length > 0 && categories.map((val, index) => {
                             return(

@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import EditOrDelete from '../EditOrDelete/EditOrDelete';
-import RegisterOper from '../RegisterOper/RegisterOper';
 import style from './CardOper.module.css';
 
 

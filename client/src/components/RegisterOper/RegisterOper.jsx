@@ -51,13 +51,13 @@ export default function RegisterOper ({closePortal, loadOper}) {
         console.log(!errors.mount)
         if((!errors.mount && !errors.date && !errors.type && !errors.categoryId) || loadOper) document.getElementById('inputButton').disabled = false;
         else document.getElementById('inputButton').disabled = true; 
-    }, [operation.concept, operation.mount, operation.date, operation.type, operation.categoryId, loadOper])
+    }, [operation.concept, operation.mount, operation.date, operation.type, operation.categoryId, errors.categoryId, errors.type, errors.date, errors.mount, loadOper])
 
 
     const submitForm = (e) => {
         e.preventDefault()
-        if(loadOper) dispatch(updateOperation({ ...operation, operationId: loadOper.id}))
-        else dispatch(registerOperation(operation))
+        if(loadOper) dispatch(updateOperation({ ...operation, operationId: loadOper.id}, closePortal))
+        else dispatch(registerOperation(operation, closePortal))
     }
 
     return ReactDOM.createPortal(

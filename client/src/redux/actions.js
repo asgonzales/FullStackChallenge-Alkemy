@@ -99,7 +99,7 @@ export const getBalance = () => {
         }
     }
 }
-export const registerOperation = (operation) => {
+export const registerOperation = (operation, closePortal) => {
     return (dispatch) => {
         try {
             axios({
@@ -112,7 +112,10 @@ export const registerOperation = (operation) => {
                     type: REGISTER_OPERATION,
                     payload: response.data
                 })
+                dispatch(getBalance())
+                dispatch(getLastRecords())
                 console.log('REGISTEROPERATION SUCCESS', response.data)
+                closePortal()
             })
         } catch (err) {
             console.log(err.message)
@@ -160,7 +163,7 @@ export const getResults = (type, categoryId) => {
         }
     }
 }
-export const updateOperation = (operation) => {
+export const updateOperation = (operation, closePortal) => {
     return () => {
         try {
             axios({
@@ -170,6 +173,7 @@ export const updateOperation = (operation) => {
             })
             .then(response => {
                 console.log('UPDATEOPERATION', response.data)
+                closePortal()
             })
         } catch (err) {
             console.log(err.message)
