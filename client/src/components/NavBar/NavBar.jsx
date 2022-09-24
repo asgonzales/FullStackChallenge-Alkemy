@@ -1,5 +1,7 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
+import { signOut } from '../../redux/actions';
 import style from './NavBar.module.css';
 
 
@@ -9,6 +11,7 @@ import style from './NavBar.module.css';
 
 
 export default function NavBar () {
+    const dispatch = useDispatch()
 
     const navigate = useNavigate()
     const [openNavBar, setOpenNavBar] = useState(false)
@@ -16,10 +19,8 @@ export default function NavBar () {
     const handleNavBar = () => {
         setOpenNavBar(!openNavBar)
     }
-    const signOut = () => {
-        console.log(document.cookie)
-        document.cookie = 'token=;expires=Thu, 01 Jan 1970 00:00:01 GMT'
-        navigate('/signin')
+    const handlerSignOut = () => {
+        dispatch(signOut(navigate))
     }
 
     return (
@@ -32,7 +33,7 @@ export default function NavBar () {
                     <div className={style.contMenu}>
                         <Link className={style.link} to='/home'>Home</Link>
                         <Link className={style.link} to='/history'>History</Link>
-                        <button onClick={signOut}>Sign Out</button>
+                        <button onClick={handlerSignOut}>Sign Out</button>
                     </div>
                 </div>
             }

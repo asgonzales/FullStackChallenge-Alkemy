@@ -76,7 +76,8 @@ const getByFilter = async (req, res) => {
                 isActive: 'true',
                 userId: jwt.verify(token, KEY_JWT).id
             },
-            include: { model: Category }
+            include: { model: Category },
+            order: [['id', 'desc']]
         })
         return res.status(200).json(operations)
     } catch (err) {

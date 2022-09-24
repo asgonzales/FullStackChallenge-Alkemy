@@ -50,7 +50,6 @@ export const loginUser = (email, password, navigate) => {
                 type: LOGIN_USER,
                 payload: response.data
             })
-            document.cookie= `token=${response.data.token}`
             toast.dismiss('login')
             toast.success('Welcome!')
             navigate('/home')
@@ -226,5 +225,25 @@ export const deleteOperation = (operationId, closePortal) => {
                 
                 toast.error(err.response.data.error)
             })
+    }
+}
+export const signOut = (navigate) => {
+    toast.loading('Signing out', {
+        id: 'signOut'
+    })
+    return() => {
+        axios({
+            method: 'PUT',
+            url: `${BASE_URL}/user/signout`
+        })
+        .then(response => {
+            toast.dismiss('signOut')
+            navigate('/signin')
+            toast.success('Come back soon!')
+        })
+        .catch(err => {
+            toast.dismiss('signOut')
+            toast.error(err.response.data.error)
+        })
     }
 }

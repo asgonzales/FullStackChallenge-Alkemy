@@ -1,6 +1,6 @@
 const { Router } = require('express');
 
-const { registerUser, loginUser } = require('./controllers/userController.js');
+const { registerUser, loginUser, signOutUser } = require('./controllers/userController.js');
 
 
 
@@ -11,6 +11,8 @@ const userRoutes = Router();
 userRoutes.post('/signup', registerUser)
 
 userRoutes.post('/signin', loginUser)
+
+userRoutes.put('/signout', signOutUser)
 
 
 

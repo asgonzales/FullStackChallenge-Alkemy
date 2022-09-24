@@ -33,7 +33,8 @@ const loginUser = async (req, res) => {
 
         if(bcrypt.compareSync(password, user.password)) {
             //Crear Token
-            const token = jwt.sign({id: user.id}, KEY_JWT, {expiresIn: '1h'})
+            const token = jwt.sign({id: user.id}, KEY_JWT, {expiresIn: '3h'})
+            res.cookie('token',token)
             return res.status(200).json({ token: token})
         }
         else return res.status(400).json({error: 'Incorrect password'})
@@ -42,10 +43,20 @@ const loginUser = async (req, res) => {
         return res.status(400).json({error: err.message})
     }
 }
+const signOutUser = async (req, res) => {
+    try {
+        res.cookie('token', 0, { expires: new Date(0)})
+        console.log('pepe')
+        return res.status(200).json({msg: 1})
+    } catch (err) {
+        return res.status(400).json({ error: err.message })
+    }
+}
 
 
 
 module.exports = {
     registerUser,
-    loginUser
+    loginUser,
+    signOutUser
 }
