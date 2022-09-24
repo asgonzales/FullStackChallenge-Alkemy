@@ -46,10 +46,11 @@ export const loginUser = (email, password, navigate) => {
             data: {email, password}
         })
         .then(response => {
-            dispatch({
-                type: LOGIN_USER,
-                payload: response.data
-            })
+            // dispatch({
+            //     type: LOGIN_USER,
+            //     payload: true
+            // })
+            localStorage.setItem('user', 'true')
             toast.dismiss('login')
             toast.success('Welcome!')
             navigate('/home')
@@ -231,13 +232,18 @@ export const signOut = (navigate) => {
     toast.loading('Signing out', {
         id: 'signOut'
     })
-    return() => {
+    return(dispatch) => {
         axios({
             method: 'PUT',
             url: `${BASE_URL}/user/signout`
         })
         .then(response => {
             toast.dismiss('signOut')
+            // dispatch({
+            //     type: LOGIN_USER,
+            //     payload: false
+            // })
+            localStorage.removeItem('user')
             navigate('/signin')
             toast.success('Come back soon!')
         })

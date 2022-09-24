@@ -3,7 +3,7 @@ import style from './SignIn.module.css';
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../../redux/actions';
 import { useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 
 
@@ -14,6 +14,8 @@ import { Link, useNavigate } from 'react-router-dom';
 export default function SignUp () {
     const dispatch = useDispatch()
     const navigate = useNavigate()
+
+    const user = localStorage.getItem('user')
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -60,6 +62,9 @@ export default function SignUp () {
             <div className={style.signup}>
                 <Link to='/signup' className={style.linkText}>Don't have an account? Sign up</Link>
             </div>
+            {
+                user ? <Navigate to='/home' /> : <></>
+            }
         </div>
     )
 }

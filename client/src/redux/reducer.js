@@ -11,8 +11,8 @@ import {
 
 
 const initialState = {
-    userReg: '',
-    userLog: '',
+    // userReg: '',
+    // userLogged: false,
     lastRecords: [],
     totalBalance: '',
     categories: '',
@@ -23,14 +23,14 @@ const initialState = {
 export const reducer = (state = initialState, action) => {
 
     switch (action.type) {
-        case REGISTER_USER: return {
-            ...state,
-            userReg: action.payload
-        }
-        case LOGIN_USER: return {
-            ...state,
-            userLog: action.payload
-        }
+        // case REGISTER_USER: return {
+        //     ...state,
+        //     userReg: action.payload
+        // }
+        // case LOGIN_USER: return {
+        //     ...state,
+        //     userLogged: action.payload
+        // }
         case GET_LAST_RECORDS: return {
             ...state,
             lastRecords: action.payload

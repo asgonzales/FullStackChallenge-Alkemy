@@ -8,6 +8,8 @@ import Landing from './pages/Landing/Landing';
 import NavBar from './components/NavBar/NavBar';
 import CookieConsent from 'react-cookie-consent';
 import { Toaster } from 'react-hot-toast';
+import NotFound from './pages/NotFound/NotFound';
+import UserLogged from './validations/UserLogged/UserLooged';
 
 function App() {
   const { pathname } = useLocation()
@@ -15,7 +17,7 @@ function App() {
   return (
     <div className="App">
       {
-        pathname !== '/signup' && pathname !== '/signin' && pathname !== '/' ?
+        pathname.toLowerCase() === '/home' || pathname.toLocaleLowerCase() === '/history' ?
         <NavBar/>
         : <></>
       }
@@ -23,10 +25,13 @@ function App() {
       <Route path='/' element={<Landing />} />
       <Route path='/signup' element={<Signup />}/>
       <Route path='/signin' element={<Signin />}/>
-      <Route path='/home' element={<Home />}/>
-      <Route path='/history' element={<History />}/>
+      <Route element={<UserLogged />} >
+        <Route path='/home' element={<Home />}/>
+        <Route path='/history' element={<History />}/>
+      </Route>
+      <Route path='*' element={<NotFound/>} />
     </Routes>
-    <CookieConsent >Oiga mi loco etamo usando galleticas si me entiende parse?</CookieConsent>
+    <CookieConsent >This site use cookies</CookieConsent>
     <Toaster />
     </div>
   );
