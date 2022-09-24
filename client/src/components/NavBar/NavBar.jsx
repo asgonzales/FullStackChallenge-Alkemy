@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import style from './NavBar.module.css';
 
 
@@ -10,10 +10,16 @@ import style from './NavBar.module.css';
 
 export default function NavBar () {
 
+    const navigate = useNavigate()
     const [openNavBar, setOpenNavBar] = useState(false)
 
     const handleNavBar = () => {
         setOpenNavBar(!openNavBar)
+    }
+    const signOut = () => {
+        console.log(document.cookie)
+        document.cookie = 'token=;expires=Thu, 01 Jan 1970 00:00:01 GMT'
+        navigate('/signin')
     }
 
     return (
@@ -26,7 +32,7 @@ export default function NavBar () {
                     <div className={style.contMenu}>
                         <Link className={style.link} to='/home'>Home</Link>
                         <Link className={style.link} to='/history'>History</Link>
-                        <button>Sign Out</button>
+                        <button onClick={signOut}>Sign Out</button>
                     </div>
                 </div>
             }
