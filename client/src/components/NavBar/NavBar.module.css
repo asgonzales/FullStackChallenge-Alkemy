@@ -49,14 +49,14 @@
 .link {
     /* border-radius: 10px; */
     /* width: 100%; */
-    padding: 1rem;
+    padding: .5rem 1rem;
     border-top: 1px solid var(--secFont);
     border-bottom: 1px solid var(--secFont);
     margin: 3rem 0;
     font-family: 'Nunito';
     font-size: 1.5rem;
     font-weight: 800;
-    color: var(--priFont);
+    color: var(--primary);
     text-decoration: none;
     /* color: black; */
 }
@@ -69,7 +69,7 @@
     font-family: 'Nunito';
     font-size: 1.5rem;
     font-weight: 600;
-    color: var(--priFont);
+    color: var(--primary);
     /* background-color: transparent; */
     /* border-bottom: 2px solid var(--secFont); */
     /* border-top: 2px solid var(--secFont); */
