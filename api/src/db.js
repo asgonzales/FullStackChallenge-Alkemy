@@ -1,11 +1,11 @@
 const { Sequelize } = require('sequelize');
 require('dotenv').config();
-const { DB_USER, DB_PASS, DB_HOST } = process.env;
+const { DB_USER, DB_PASS, DB_HOST, DB_NAME } = process.env;
 const user = require('./models/User.js');
 const operation = require('./models/Operation.js');
 const category = require('./models/Category.js');
 
-const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASS}@${DB_HOST}/budget`, {
+const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASS}@${DB_HOST}/${DB_NAME}`, {
     logging: false,
     native: false
 })
