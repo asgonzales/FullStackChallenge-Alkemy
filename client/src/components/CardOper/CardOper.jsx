@@ -29,7 +29,7 @@ export default function CardOper ({oper, edit}) {
                 }
                 <div className={style.dataDiv}>
                     {/* <div className={style.infoConcept}> */}
-                        <input className={style.conceptInput} type="text" value={oper.concept} readOnly />
+                    <input className={style.conceptInput} type="text" value={oper.concept} readOnly />
                     {/* </div> */}
                     <input className={style.dateInput} type="text" value={oper.date} readOnly />
                 </div>

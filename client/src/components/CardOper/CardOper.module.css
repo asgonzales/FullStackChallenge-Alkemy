@@ -6,6 +6,7 @@
     /* padding: .5rem 0; */
     transition: all 0.2s ease;
     overflow: hidden;
+    /* background-color: blue; */
 }
 .contCardOper:focus-within {
     height: 10rem;
@@ -42,6 +43,10 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    /* background-color: red; */
+}
+.dataDiv > input {
+    background-color: transparent;
 }
 .dateInput, .conceptInput {
     /* border: 1px solid red; */
@@ -88,6 +93,7 @@
     color: var(--secFont);
     font-weight: 800;
     text-align: center;
+    background-color: transparent;
 }
 .hideInfo {
     /* border: 1px solid red; */
@@ -111,6 +117,7 @@
     color: var(--priFont);
     outline: none;
     border: none;
+    background-color: transparent;
 }
 .hideInfo > div {
     border: 1px solid green;

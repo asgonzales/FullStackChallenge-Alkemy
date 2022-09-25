@@ -12,6 +12,7 @@
 .navButton {
     font-family: 'Nunito';
     font-weight: 800;
+    font-size: 1em;
     color: var(--primary);
     background-color: transparent;
     border: none;
@@ -46,8 +47,9 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    background-color: white;
+    background-color: var(--back);
     animation: bornSide 0.5s;
+    transition: all 0.2s ease;
 }
 .link {
     /* border-radius: 10px; */
@@ -73,7 +75,7 @@
     font-size: 1.5rem;
     font-weight: 600;
     color: var(--primary);
-    /* background-color: transparent; */
+    background-color: transparent;
     /* border-bottom: 2px solid var(--secFont); */
     /* border-top: 2px solid var(--secFont); */
 }

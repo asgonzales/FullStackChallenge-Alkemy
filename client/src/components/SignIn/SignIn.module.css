@@ -49,6 +49,8 @@
     font-family: 'Nunito';
     font-size: 1.5em;
     transition: all 0.2s ease;
+    background-color: var(--back);
+    color: var(--priFont);
 }
 .inputBox:focus {
     border: 1px solid var(--priFont);
@@ -62,10 +64,10 @@
     font-size: 1.5em;
     transition: all 0.2s ease;
     background-color: var(--primary);
-    color: white;
+    color: var(--back);
 }
 .inputButton:disabled {
-    color: white;
+    /* color: white; */
     background-color: var(--secFont);
 }
 .inputButton:active {

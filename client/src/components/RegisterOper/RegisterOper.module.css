@@ -17,8 +17,8 @@
 }
 .contRegisterOper {
     /* border: 1px solid red; */
-    background-color: white;
-    /* box-shadow: -5px 0 15px -5px var(--secFont); */
+    background-color: var(--back);
+    box-shadow: 0 0 15px var(--secFont);
     border-radius: 10px;
     width: 90%;
     height: 30rem;
@@ -48,9 +48,19 @@
     font-weight: 600;
     font-size: 1em;
     transition: all 0.2s ease;
+    background-color: var(--back);
+    color: var(--priFont);
+}
+.input::placeholder {
+    color: var(--priFont);
 }
 .input:focus {
     border: 1px solid var(--priFont);
+}
+.input > option {
+    background-color: var(--back);
+    /* background-color: red; */
+    color: var(--priFont);
 }
 .submitButton {
     width: 90%;
@@ -58,7 +68,7 @@
     padding: .5rem;
     border: none;
     background-color: var(--primary);
-    color: white;
+    color: var(--back);
     font-family: 'Nunito';
     font-weight: 800;
     font-size: 1.5em;
@@ -69,7 +79,7 @@
     background-color: var(--secFont);
 }
 .submitButton:disabled {
-    color: white;
+    color: var(--back);
     background-color: var(--secFont);
 }
 .cancelButton {
@@ -78,6 +88,7 @@
     background-color: transparent;
     font-family: 'Nunito';
     font-size: 1.2em;
+    color: var(--priFont);
 }
 
 @keyframes bornCard {

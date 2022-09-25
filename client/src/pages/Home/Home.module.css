@@ -21,7 +21,8 @@
     height: 10rem;
     /* position: fixed; */
     /* top: 0; */
-    background-color: var(--back);
+    /* background-color: var(--back); */
+    transition: all 0.2s ease;
     /* box-shadow: 0 5px 25px 0 black; */
 }
 
@@ -58,7 +59,7 @@
     background-color: var(--primary);
     font-family: 'Nunito';
     font-weight: 800;
-    color: white;
+    color: var(--back);
     font-size: 1.2em;
     transition: all 0.2s ease;
 }

@@ -9,7 +9,7 @@ import NavBar from './components/NavBar/NavBar';
 import CookieConsent from 'react-cookie-consent';
 import { Toaster } from 'react-hot-toast';
 import NotFound from './pages/NotFound/NotFound';
-import UserLogged from './validations/UserLogged/UserLooged';
+import UserLogged from './helpers/UserLogged/UserLooged';
 
 function App() {
   const { pathname } = useLocation()

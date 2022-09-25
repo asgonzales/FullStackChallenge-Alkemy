@@ -68,7 +68,7 @@ export default function RegisterOper ({closePortal, loadOper}) {
                     <input className={style.input} name='mount' type="number" placeholder='mount' onChange={handleOper} value={operation.mount} />
                     <input className={style.input} name='date' type="date" placeholder='date' onChange={handleOper} value={operation.date} max={date} />
                     <select className={style.input} name="type" id="type" onChange={handleOper} value={operation.type} disabled={loadOper?true:false}>
-                        <option value="none" hidden>Select a type</option>
+                        <option className={style.asa} value="none" hidden>Select a type</option>
                         <option value="egreso">egreso</option>
                         <option value="ingreso">ingreso</option>
                     </select>

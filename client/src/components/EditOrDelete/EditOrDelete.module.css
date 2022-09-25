@@ -12,7 +12,8 @@
     /* border: 1px solid red; */
 }
 .contEditOrDelete {
-    background-color: white;
+    background-color: var(--back);
+    box-shadow: 0 0 15px var(--secFont);
     width: 90%;
     border-radius: 10px;
     height: 6rem;
@@ -49,6 +50,7 @@
     background-color: transparent;
     font: 400 1em 'Nunito';
     text-decoration: underline;
+    color: var(--priFont);
 }
 
 @keyframes bornCard {

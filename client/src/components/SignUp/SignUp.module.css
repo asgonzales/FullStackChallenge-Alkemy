@@ -41,15 +41,19 @@
 } */
 
 .inputBox {
-    border: 1px solid black;
+    border: 1px solid var(--secFont);
     border-radius: 10px;
     outline: none;
     width: 80%;
     padding: 2% 4%;
     font-family: 'Nunito';
     font-size: 1.5em;
+    background-color: var(--back);
+    color: var(--priFont);
 }
-
+.inputBox:focus {
+    border: 1px solid var(--priFont);
+}
 .inputButton {
     width: 80%;
     border: none;
@@ -60,10 +64,11 @@
     background-color: var(--primary);
     color: white;
     transition: all 0.2s ease;
+    color: var(--back);
 }
 .inputButton:disabled {
     background-color: var(--secFont);
-    color: white;
+    /* color: white; */
 }
 .inputButton:active {
     background-color: var(--secFont);
