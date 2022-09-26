@@ -3,6 +3,7 @@ import RegisterOper from '../../components/RegisterOper/RegisterOper';
 import TotalBalance from '../../components/TotalBalance/TotalBalance';
 import style from './Home.module.css';
 import { useState } from 'react';
+import { useEffect } from 'react';
 
 
 
@@ -14,6 +15,10 @@ import { useState } from 'react';
 export default function Home () {
 
     const [openPortal, setOpenPortal] = useState(false)
+
+    useEffect(() => {
+        document.title = 'FinnApp | Home'
+    }, [])
 
     const handlePortal = () => {
         setOpenPortal(!openPortal)
