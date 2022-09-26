@@ -23,19 +23,37 @@ Resumen e instalación del proyecto. Este proyecto es un challenge para la acele
 ```bash
     git clone https://github.com/asgonzales/FullStackChallenge-Alkemy
 ```
-## Dentro de la carpeta api
+## Crear una base de datos local en postgresql
+
+## Dentro de la carpeta client crear un archivo .env con los siguientes valores
+
+    DB_USER(postgres)= usuario de la base de datos
+    DB_PASS(12345)= password de la base de datos
+    DB_HOST=localhost:5432
+    DB_NAME= nombre de la base de datos
+    KEY_JWT= finnapp
+    CORS_ORIGIN=http://localhost:3000
+
+## Ejecutar los siguientes comandos
 
 ```bash
     npm install
     npm start
 ```
 
-## Dentro de la carpeta client
+
+## Dentro de la carpeta client crear un archivo .env con los siguientes valores
+
+    REACT_APP_BASE_URL=http://localhost:3001
+
+## Ejecutar los siguiente comandos
 
 ```bash
     npm install
     npm start
 ```
+
+
 ### Luego se podrá ver el proyecto ejecutándose en localhost:3000
 
 
