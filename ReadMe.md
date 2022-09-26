@@ -1,6 +1,44 @@
 ![banner](./media/LargeBanner.jpg)
 
 
+# Instroducción
+
+Resumen e instalación del proyecto. Este proyecto es un challenge para la aceleración de Full Stack Developer de Alkemy.
+
+## Características
+
+- Tener un balance total de los ingresos y egresos personales.
+- Ver los últimos 10 registros de ingresos y egresos, junto al balance.
+- ABM de operaciones.
+- Obtener operaciones según su tipo o categoría
+- Registro de usuario.
+- Login de usuario.
+
+## Tecnologías
+
+# Instalación del proyecto
+
+## Clonar el repositorio
+
+```bash
+    git clone https://github.com/asgonzales/FullStackChallenge-Alkemy
+```
+## Dentro de la carpeta api
+
+```bash
+    npm install
+    npm start
+```
+
+## Dentro de la carpeta client
+
+```bash
+    npm install
+    npm start
+```
+### Luego se podrá ver el proyecto ejecutándose en localhost:3000
+
+
 # CHALLENGE FULL STACK -JavaScript 🚀 <img src='./media/alkemy.jpg' width=150 />
 
 ## Objetivo

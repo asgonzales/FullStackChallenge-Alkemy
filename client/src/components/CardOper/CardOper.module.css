@@ -1,0 +1,143 @@
+.contCardOper {
+    width: 100%;
+    border-bottom: 1px solid var(--secFont);
+    height: 3rem;
+    transition: all 0.2s ease;
+    overflow: hidden;
+    transition:  all 0.2s ease;
+}
+.contCardOper:focus-within {
+    height: 10rem;
+}
+.visibleInfo {
+    height: 3rem;
+    margin: 0 1em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.editDiv {
+    width: 10%;
+}
+.editDiv > button {
+    font-family: 'Nunito';
+    font-weight: 600;
+    color: white;
+    background-color: var(--primary);
+    border: none;
+    border-radius: 5px;
+    padding: .5em .7em;
+    transition: all 0.2s ease;
+}
+.editDiv > button:active {
+    color: white;
+    background-color: var(--secFont);
+}
+.dataDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.dataDiv > input {
+    background-color: transparent;
+}
+.dateInput, .conceptInput {
+    border: none;
+    outline: none;
+    font-size: 1em;
+    font-family: 'Nunito';
+    color: var(--priFont);
+    font-weight: 800;
+    margin: 0;
+    padding: 0;
+}
+.dateInput {
+    color: var(--secFont);
+    font-weight: 600;
+    font-size: .7em;
+}
+.mountDiv {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.income {
+    outline: none;
+    border: none;
+    padding: .3em;
+    width: 100%;
+    font-family: 'Nunito';
+    color: var(--greenDark);
+    background-color: var(--greenBright);
+    border-radius: 5px;
+    font-weight: 800;
+    text-align: center;
+}
+.expenses {
+    outline: none;
+    border: none;
+    padding: .3em;
+    width: 100%;
+    font-family: 'Nunito';
+    color: var(--secFont);
+    font-weight: 800;
+    text-align: center;
+    background-color: transparent;
+}
+.hideInfo {
+    height: 7rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.hideInfo > label {
+    width: 90%;
+    font-family: 'Nunito';
+    font-weight: 600;
+    color: var(--secFont);
+}
+.hideInfo > input {
+    width: 80%;
+    font-family: 'Nunito';
+    font-weight: 800;
+    color: var(--priFont);
+    outline: none;
+    border: none;
+    background-color: transparent;
+}
+.hideInfo > div {
+    border: 1px solid green;
+    width: 90%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/* Small devices */
+@media screen and (min-width: 576px) {
+    .editDiv > button:hover {
+        cursor: pointer;
+        box-shadow: 0 0 10px var(--primary);
+    }
+    .dataDiv > input:hover {
+        cursor: pointer;
+    }
+}
+/* Medium devices */
+@media screen and (min-width: 768px) {
+    .contCardOper:focus-within {
+        border-radius: 0 0 20px 20px;
+        border-left: 1px solid var(--secFont);
+        border-right: 1px solid var(--secFont);
+    }
+}
+/* Large devices */
+@media screen and (min-width: 992px) {
+    
+}
+/* Extra large devices */
+@media screen and (min-width: 1200px) {
+
+}

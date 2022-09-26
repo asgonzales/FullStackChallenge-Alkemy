@@ -1,0 +1,11 @@
+.contResultsOper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.contResultsOper > h1 {
+    font-family: 'Nunito';
+    font-weight: 800;
+    color: var(--primary)
+}

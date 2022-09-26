@@ -1,3 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;400;600;800&display=swap');
+:root {
+  /* Bright Mode */
+  --back: #ffffff;
+  --primary: #614ccf;
+  --priFont: #525252;
+  --secFont: #bcbcbc;
+  --greenDark: #1e823c;
+  --greenBright: #e2fef0;
+
+  /* --back: black; */
+  /* Dark Mode */
+  /* --back: black;
+  --primary: #614ccf;
+  --priFont: rgba(170, 170, 170);
+  --secFont: rgba(130, 130, 130, 0.5);
+  --greenDark: rgb(25, 120, 35);
+  --greenBright: rgba(25, 120, 35, 0.2); */
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

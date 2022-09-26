@@ -1,0 +1,123 @@
+.contNavBar {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 3rem;
+    z-index: 2;
+}
+.navButton {
+    font-family: 'Nunito';
+    font-weight: 800;
+    font-size: 1em;
+    color: var(--primary);
+    background-color: transparent;
+    border: none;
+    height:100%;
+    width: 10%;
+    padding: 0;
+    margin: 2em 1em 0 0;
+    transition: all 0.2s ease;
+    border-radius: 10px;
+}
+.backgroundNavBar {
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.closeDiv {
+    position: absolute;
+    height: 100vh;
+    width: 50%;
+    left: 0;
+}
+.contMenu {
+    border-left: 1px solid var(--secFont);
+    box-shadow: -5px 0 15px -5px var(--secFont);
+    position: absolute;
+    height: 100vh;
+    width: 50%;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: var(--back);
+    animation: bornSide 0.5s;
+    transition: all 0.2s ease;
+}
+.link {
+    padding: .5rem 1rem;
+    border-top: 1px solid var(--secFont);
+    border-bottom: 1px solid var(--secFont);
+    margin: 3rem 0;
+    font-family: 'Nunito';
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+.link:active {
+    color: var(--primary);
+}
+.contMenu > button {
+    border: none;
+    padding: .5em 0;
+    font-family: 'Nunito';
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary);
+    background-color: transparent;
+    transition: all 0.2s ease;
+}
+
+@keyframes bornSide {
+    from {
+        transform: translateX(100%);
+    }   
+    to {
+        transform: translateX(0%);
+    }
+}
+
+/* Small devices */
+@media screen and (min-width: 576px) {
+    
+}
+/* Medium devices */
+@media screen and (min-width: 768px) {
+    .navButton:hover {
+        cursor: pointer;
+        background-color: var(--primary);
+        color: var(--back);
+    }
+    .contMenu {
+        width: 30%;
+    }
+    .closeDiv {
+        width: 70%;
+    }
+    .link:hover {
+        color: var(--back);
+        background-color: var(--primary);
+    }
+    .link:active {
+        padding: .5rem 1.5rem;
+    }
+    .contMenu > button:hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+}
+/* Large devices */
+@media screen and (min-width: 992px) {
+    
+}
+/* Extra large devices */
+@media screen and (min-width: 1200px) {
+
+}

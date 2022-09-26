@@ -1,0 +1,100 @@
+.contSignUp {
+    width: 90%;
+    height: 30rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.divTitle {
+    width: 100%;
+    height: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Nunito';
+    font-size: 2em;
+    color: var(--primary);
+}
+
+.divForm {
+    height: 65%;
+    width: 100%;
+}
+
+.form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.inputBox {
+    border: 1px solid var(--secFont);
+    border-radius: 10px;
+    outline: none;
+    width: 80%;
+    padding: 2% 4%;
+    font-family: 'Nunito';
+    font-size: 1.5em;
+    background-color: var(--back);
+    color: var(--priFont);
+}
+.inputBox:focus {
+    border: 1px solid var(--priFont);
+}
+.inputButton {
+    width: 80%;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Nunito';
+    padding: 2% 4%;
+    font-size: 1.5em;
+    background-color: var(--primary);
+    color: white;
+    transition: all 0.2s ease;
+    color: var(--back);
+}
+.inputButton:disabled {
+    background-color: var(--secFont);
+}
+.inputButton:active {
+    background-color: var(--secFont);
+    color: var(--priFont);
+}
+.signin {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.linkText {
+    text-decoration: underline;
+    color: var(--priFont);
+    font-size: 1.3rem;
+    font-family: 'Nunito';
+}
+
+
+/* Small devices */
+@media screen and (min-width: 576px) {
+.contSignUp {
+    width: 30rem;
+}
+}
+/* Medium devices */
+@media screen and (min-width: 768px) {
+
+}
+/* Large devices */
+@media screen and (min-width: 992px) {
+    
+}
+/* Extra large devices */
+@media screen and (min-width: 1200px) {
+
+}
