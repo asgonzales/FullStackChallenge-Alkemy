@@ -239,6 +239,10 @@ export const signOut = (navigate) => {
                 type: GET_RESULTS,
                 payload: []
             })
+            dispatch({
+                type: GET_BALANCE,
+                payload: 0
+            })
             localStorage.removeItem('user')
             navigate('/signin')
             toast.success('Come back soon!')
