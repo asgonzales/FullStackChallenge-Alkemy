@@ -34,7 +34,7 @@ const loginUser = async (req, res) => {
         if(bcrypt.compareSync(password, user.password)) {
             //Crear Token
             const token = jwt.sign({id: user.id}, KEY_JWT, {expiresIn: '3h'})
-            res.cookie('token', token, { sameSite: true, secure: true })
+            res.cookie('token', token, { sameSite: 'none', secure: true })
             return res.status(200).json({ token: token})
         }
         else return res.status(400).json({error: 'Incorrect password'})
