@@ -87,7 +87,10 @@
 }
 /* Medium devices */
 @media screen and (min-width: 768px) {
-    
+    .inputButton:enabled:hover {
+        cursor: pointer;
+        box-shadow: 0 0 10px var(--primary);
+    }
 }
 /* Large devices */
 @media screen and (min-width: 992px) {
