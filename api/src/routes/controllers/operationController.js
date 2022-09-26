@@ -36,7 +36,7 @@ const updateOperation = async (req, res) => {
             where: { id: operationId } ,
             include: [{ model: Category }, { model: User }]
         })
-        return res.json(newOperation)
+        return res.status(200).json(newOperation)
     } catch (err) {
         return res.status(400).json({error: err.message})
     }
@@ -52,7 +52,7 @@ const getAllOperation = async (req, res) => {
             include: { model: Category }
         })
 
-        return res.json(allOperations)
+        return res.status(200).json(allOperations)
 
     } catch (err) {
         return res.status(400).json({error: err.message})
@@ -127,7 +127,7 @@ const deleteOperation = async (req, res) => {
     try {
         await Operation.update({ isActive: 'false'}, { where: { id: operationId } })
         const delOperation = await Operation.findOne({where: { id: operationId } })
-        return res.json(delOperation)
+        return res.status(200).json(delOperation)
     } catch (err) {
         return res.status({ error: err.message })
     }
