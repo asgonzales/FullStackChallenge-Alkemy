@@ -2,7 +2,6 @@
     height: 100vh;
     padding: 1rem 0;
     width: 100%;
-    /* background-color: grey; */
     background-color: rgba(0, 0, 0, 0.2);
     display: flex;
     justify-content: center;
@@ -12,11 +11,9 @@
     left: 0;
     z-index: 3;
     backdrop-filter: blur(1.5px);
-    /* border: 1px solid red; */
     overflow: hidden;
 }
 .contRegisterOper {
-    /* border: 1px solid red; */
     background-color: var(--back);
     box-shadow: 0 0 15px var(--secFont);
     border-radius: 10px;
@@ -30,7 +27,6 @@
 }
 
 .form {
-    /* border: 1px solid green; */
     height: 90%;
     width: 15rem;
     display: flex;
@@ -60,7 +56,6 @@
 }
 .input > option {
     background-color: var(--back);
-    /* background-color: red; */
     color: var(--priFont);
 }
 .submitButton {
@@ -73,7 +68,6 @@
     font-family: 'Nunito';
     font-weight: 800;
     font-size: 1.5em;
-    /* background-color: red; */
 }
 .submitButton:active {
     color: var(--priFont);

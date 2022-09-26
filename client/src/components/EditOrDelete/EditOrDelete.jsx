@@ -19,7 +19,6 @@ export default function EditOrDelete ({handlePortal, loadOper}) {
 
 
     const deleteOper = () => {
-        console.log(loadOper)
         dispatch(deleteOperation(loadOper.id, handlePortal))
     }
 

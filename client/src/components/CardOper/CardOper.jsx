@@ -28,9 +28,7 @@ export default function CardOper ({oper, edit}) {
                     :<></>
                 }
                 <div className={style.dataDiv}>
-                    {/* <div className={style.infoConcept}> */}
                     <input className={style.conceptInput} type="text" value={oper.concept} readOnly />
-                    {/* </div> */}
                     <input className={style.dateInput} type="text" value={oper.date} readOnly />
                 </div>
                 <div className={style.mountDiv}>
@@ -38,18 +36,13 @@ export default function CardOper ({oper, edit}) {
                 </div>
             </div>
             <div className={style.hideInfo}>
-                {/* <div> */}
-                    <label>Type: </label>
-                    <input type='text' value={oper.type} readOnly />
-                {/* </div>
-                <div> */}
-                    <label>Category: </label>
-                    <input type='text' value={oper.Category?.name} readOnly />
-                {/* </div> */}
+                <label>Type: </label>
+                <input type='text' value={oper.type} readOnly />
+                <label>Category: </label>
+                <input type='text' value={oper.Category?.name} readOnly />
             </div>
             {
                 openEdit?
-                // <RegisterOper loadOper={oper} closePortal={editOper}/>
                 <EditOrDelete loadOper={oper} handlePortal={editOper} />
                 : <></>
             }

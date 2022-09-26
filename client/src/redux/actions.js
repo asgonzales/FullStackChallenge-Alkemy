@@ -71,18 +71,15 @@ export const getLastRecords = () => {
                 url: `${BASE_URL}/operation/lastrecords`
             })
             .then(response => {
-                console.log(response.data.length)
                 dispatch({
                     type: GET_LAST_RECORDS,
                     payload: response.data.length > 0 ? response.data : 'empty'
                 })
                 toast.dismiss('LastRecords')
-                // console.log('LastRecords success')
             })
             .catch (err => {
                 toast.dismiss('LastRecords')
                 toast.err(err.response.data.error)
-                // console.log(err.message)
             })
     }
 }
@@ -101,7 +98,6 @@ export const getBalance = () => {
                 payload: response.data
             })
             toast.dismiss('LastRecords')
-            // console.log('getBalance success :D', response.data)
         })
         .catch(err => {
             toast.dismiss('LastRecords')
@@ -126,7 +122,6 @@ export const registerOperation = (operation, closePortal) => {
                 })
                 dispatch(getBalance())
                 dispatch(getLastRecords())
-                // console.log('REGISTEROPERATION SUCCESS', response.data)
                 closePortal()
                 toast.dismiss('registerOperation')
                 toast.success('Operation added')
@@ -149,7 +144,6 @@ export const getCategories = () => {
                     type: GET_CATEGORIES,
                     payload: response.data
                 })
-                console.log('GETCATEGORIES', response.data)
             })
         } catch (err) {
             console.log(err.message)
@@ -174,7 +168,6 @@ export const getResults = (type, categoryId) => {
                     payload: response.data.length > 0 ? response.data : 'empty'
                 })
                 toast.dismiss('getResults')
-                // console.log('GETRESULTS', response.data)
             })
             .catch(err => {
                 toast.dismiss('getResults')
@@ -193,7 +186,6 @@ export const updateOperation = (operation, closePortal) => {
                 data: operation
             })
             .then(response => {
-                // console.log('UPDATEOPERATION', response.data)
                 toast.dismiss('updateOperation')
                 toast.success('operation updated')
                 dispatch(getResults())
@@ -216,7 +208,6 @@ export const deleteOperation = (operationId, closePortal) => {
                 data: { operationId }
             })
             .then(response => {
-                // console.log('DELETEOPERATION', response.data)
                 toast.dismiss('deleteOperation')
                 toast.success('Operation deleted')
                 dispatch(getResults())

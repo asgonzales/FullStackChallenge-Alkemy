@@ -1,7 +1,6 @@
 .contSearchBar {
     width: 100%;
     height: 10rem;
-    /* border: 1px solid red; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,7 +10,6 @@
     color: var(--primary);
 }
 .contSearchBar > div {
-    /* border: 1px solid green; */
     width: 100%;
     display: flex;
     align-items: center;

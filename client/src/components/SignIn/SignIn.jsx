@@ -55,7 +55,6 @@ export default function SignUp () {
                 <form onSubmit={submitForm} className={style.form}>
                     <input className={style.inputBox} id='email' type="text" placeholder='email' onChange={handleEmail}/>
                     <input className={style.inputBox} id='password' type="password" placeholder='password' onChange={handlePassword} />
-                    {/* <label id='labelError'></label> */}
                     <input id='submitButton' className={style.inputButton} type="submit" value='Log In' disabled/>
                 </form>
             </div>

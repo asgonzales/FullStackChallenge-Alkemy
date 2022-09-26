@@ -1,12 +1,9 @@
 .contCardOper {
     width: 100%;
-    /* margin: .5rem 0; */
     border-bottom: 1px solid var(--secFont);
     height: 3rem;
-    /* padding: .5rem 0; */
     transition: all 0.2s ease;
     overflow: hidden;
-    /* background-color: blue; */
     transition:  all 0.2s ease;
 }
 .contCardOper:focus-within {
@@ -15,19 +12,16 @@
 .visibleInfo {
     height: 3rem;
     margin: 0 1em;
-    /* border: 1px solid red; */
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 .editDiv {
     width: 10%;
-    /* border: 1px solid blue; */
 }
 .editDiv > button {
     font-family: 'Nunito';
     font-weight: 600;
-    /* font-size: .8em; */
     color: white;
     background-color: var(--primary);
     border: none;
@@ -40,17 +34,14 @@
     background-color: var(--secFont);
 }
 .dataDiv {
-    /* border: 1px solid blue; */
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* background-color: red; */
 }
 .dataDiv > input {
     background-color: transparent;
 }
 .dateInput, .conceptInput {
-    /* border: 1px solid red; */
     border: none;
     outline: none;
     font-size: 1em;
@@ -63,11 +54,9 @@
 .dateInput {
     color: var(--secFont);
     font-weight: 600;
-    /* border: 1px solid green; */
     font-size: .7em;
 }
 .mountDiv {
-    /* border: 1px solid blue; */
     width: 25%;
     display: flex;
     justify-content: center;
@@ -97,7 +86,6 @@
     background-color: transparent;
 }
 .hideInfo {
-    /* border: 1px solid red; */
     height: 7rem;
     display: flex;
     flex-direction: column;
@@ -105,7 +93,6 @@
     justify-content: space-evenly;
 }
 .hideInfo > label {
-    /* border: 1px solid red; */
     width: 90%;
     font-family: 'Nunito';
     font-weight: 600;
