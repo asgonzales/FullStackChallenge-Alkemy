@@ -13,7 +13,7 @@ const createCategory = async (req, res) => {
 
     try {
         const newCategory = await Category.create({name})
-        return res.json(newCategory)
+        return res.status(200).json(newCategory)
     } catch( err ) {
         return res.status(400).json({error: err.message})
     }
@@ -25,7 +25,7 @@ const getCategories = async (req, res) => {
     try {
 
         const categories = await Category.findAll()
-        return res.json(categories)
+        return res.status(200).json(categories)
 
     } catch( err ) {
 

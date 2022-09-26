@@ -10,7 +10,8 @@ export const GET_CATEGORIES = 'GET_CATEGORIES';
 export const GET_RESULTS = 'GET_RESULTS';
 
 
-const BASE_URL = 'http://localhost:3001'
+// const BASE_URL = 'http://localhost:3001'
+const BASE_URL = 'https://apifinapp.onrender.com'
 
 axios.defaults.withCredentials = true;
 
