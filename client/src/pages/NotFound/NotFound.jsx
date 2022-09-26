@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import style from './NotFound.module.css';
 
 
@@ -9,6 +10,9 @@ import style from './NotFound.module.css';
 
 export default function NotFound () {
 
+    useEffect(() => {
+        document.title = 'FinnApp | Not found'
+    }, [])
 
 
 
