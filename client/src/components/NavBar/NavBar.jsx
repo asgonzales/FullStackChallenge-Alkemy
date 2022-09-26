@@ -35,8 +35,8 @@ export default function NavBar () {
                 <div className={style.backgroundNavBar}>
                     <div onClick={handleNavBar} className={style.closeDiv}></div>
                     <div className={style.contMenu}>
-                        <Link className={style.link} to='/home'>Home</Link>
-                        <Link className={style.link} to='/history'>History</Link>
+                        <Link onClick={handleNavBar} className={style.link} to='/home'>Home</Link>
+                        <Link onClick={handleNavBar} className={style.link} to='/history'>History</Link>
                         <button onClick={handleTheme}>{theme?'Dark mode': 'Light mode'}</button>
                         <button onClick={handlerSignOut}>Sign Out</button>
                     </div>

@@ -62,8 +62,35 @@
     color: var(--back);
     font-size: 1.2em;
     transition: all 0.2s ease;
+    width: 15rem;
 }
 .newOperBtn:active {
     color: var(--priFont);
     background-color: var(--secFont);
+}
+
+/* Small devices */
+@media screen and (min-width: 576px) {
+}
+/* Medium devices */
+@media screen and (min-width: 768px) {
+    .divTop {
+        width: 40rem;
+    }
+    .divRecords {
+        width: 40rem;
+    }
+    .newOperBtn:hover {
+        box-shadow: 0 0 10px var(--primary);
+        cursor: pointer;
+        width: 20rem;
+    }
+}
+/* Large devices */
+@media screen and (min-width: 992px) {
+    
+}
+/* Extra large devices */
+@media screen and (min-width: 1200px) {
+
 }

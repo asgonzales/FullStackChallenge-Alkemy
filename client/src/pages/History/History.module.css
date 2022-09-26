@@ -16,3 +16,25 @@
     width: 100%;
     /* height: 6rem; */
 }
+
+
+/* Small devices */
+@media screen and (min-width: 576px) {
+}
+/* Medium devices */
+@media screen and (min-width: 768px) {
+    .divSearch {
+        width: 40rem;
+    }
+    .divResults {
+        width: 40rem;
+    }
+}
+/* Large devices */
+@media screen and (min-width: 992px) {
+    
+}
+/* Extra large devices */
+@media screen and (min-width: 1200px) {
+
+}

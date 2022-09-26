@@ -24,6 +24,7 @@ export default function RegisterOper ({closePortal, loadOper}) {
         categoryId: loadOper?.Category.id || ''
     })
     const [errors, setErrors] = useState({
+        concept: true,
         mount: true,
         date: false,
         type: true,
@@ -40,6 +41,7 @@ export default function RegisterOper ({closePortal, loadOper}) {
             [e.target.name]: e.target.value
         })
         switch (e.target.name) {
+            case 'concept': setErrors({ ...errors, concept: e.target.value.length < 1 ? true : false }); break;
             case 'mount': setErrors({ ...errors, mount: e.target.value < 0 ? true : false }); break;
             case 'date': setErrors({ ...errors, date: e.target.value > date ? true : false }); break;
             case 'type': setErrors({ ...errors, type: false }); break;
@@ -48,10 +50,10 @@ export default function RegisterOper ({closePortal, loadOper}) {
         }
     }
     useEffect(() => {
-        console.log(!errors.mount)
-        if((!errors.mount && !errors.date && !errors.type && !errors.categoryId) || loadOper) document.getElementById('inputButton').disabled = false;
+        console.log(errors)
+        if(( !errors.concept && !errors.mount && !errors.date && !errors.type && !errors.categoryId) || loadOper) document.getElementById('inputButton').disabled = false;
         else document.getElementById('inputButton').disabled = true; 
-    }, [operation.concept, operation.mount, operation.date, operation.type, operation.categoryId, errors.categoryId, errors.type, errors.date, errors.mount, loadOper])
+    }, [operation.concept, operation.mount, operation.date, operation.type, operation.categoryId, errors.categoryId, errors.type, errors.date, errors.mount, errors.concept, loadOper])
 
 
     const submitForm = (e) => {

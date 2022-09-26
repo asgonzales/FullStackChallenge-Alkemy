@@ -32,6 +32,7 @@
 .form {
     /* border: 1px solid green; */
     height: 90%;
+    width: 15rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -98,4 +99,45 @@
     to {
         transform: translateY(0%);
     }
+}
+
+/* Small devices */
+@media screen and (min-width: 576px) {
+    
+}
+/* Medium devices */
+@media screen and (min-width: 768px) {
+    .form {
+        width: 20rem;
+    }
+    .contRegisterOper {
+        width: 40rem;
+    }
+    .submitButton {
+        width: 80%;
+        transition: all 0.2s ease;
+    }
+    .submitButton:enabled:hover {
+        cursor: pointer;
+        width: 100%;
+        box-shadow: 0 0 10px var(--primary);
+    }
+    .cancelButton:hover {
+        cursor: pointer;
+        font-weight: 800;
+    }
+    .input:hover {
+        cursor: pointer;
+    }
+    .input[type=number]:hover, .input[type=text] {
+        cursor:text;
+    }
+}
+/* Large devices */
+@media screen and (min-width: 992px) {
+    
+}
+/* Extra large devices */
+@media screen and (min-width: 1200px) {
+
 }

@@ -27,3 +27,6 @@
     text-align: center;
     background-color: var(--back);
 }
+.contSearchBar > div > select:hover {
+    cursor: pointer;
+}

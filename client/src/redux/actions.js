@@ -71,9 +71,10 @@ export const getLastRecords = () => {
                 url: `${BASE_URL}/operation/lastrecords`
             })
             .then(response => {
+                console.log(response.data.length)
                 dispatch({
                     type: GET_LAST_RECORDS,
-                    payload: response.data
+                    payload: response.data.length > 0 ? response.data : 'empty'
                 })
                 toast.dismiss('LastRecords')
                 // console.log('LastRecords success')
@@ -170,7 +171,7 @@ export const getResults = (type, categoryId) => {
             .then(response => {
                 dispatch({
                     type: GET_RESULTS,
-                    payload: response.data
+                    payload: response.data.length > 0 ? response.data : 'empty'
                 })
                 toast.dismiss('getResults')
                 // console.log('GETRESULTS', response.data)

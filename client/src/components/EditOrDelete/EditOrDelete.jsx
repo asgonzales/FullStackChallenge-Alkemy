@@ -27,8 +27,8 @@ export default function EditOrDelete ({handlePortal, loadOper}) {
         <div className={style.backgroundEditOrDelete}>
             <div className={style.contEditOrDelete}>
                 <div>
-                    <button onClick={deleteOper}>Delete</button>
-                    <button onClick={handleNewPortal}>Edit</button>
+                    <button className={style.deleteButton} onClick={deleteOper}>Delete</button>
+                    <button className={style.editButton} onClick={handleNewPortal}>Edit</button>
                 </div>
                     <button onClick={handlePortal}>Close</button>
             </div>

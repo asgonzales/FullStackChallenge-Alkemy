@@ -7,6 +7,7 @@
     transition: all 0.2s ease;
     overflow: hidden;
     /* background-color: blue; */
+    transition:  all 0.2s ease;
 }
 .contCardOper:focus-within {
     height: 10rem;
@@ -125,4 +126,31 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+}
+
+/* Small devices */
+@media screen and (min-width: 576px) {
+    .editDiv > button:hover {
+        cursor: pointer;
+        box-shadow: 0 0 10px var(--primary);
+    }
+    .dataDiv > input:hover {
+        cursor: pointer;
+    }
+}
+/* Medium devices */
+@media screen and (min-width: 768px) {
+    .contCardOper:focus-within {
+        border-radius: 0 0 20px 20px;
+        border-left: 1px solid var(--secFont);
+        border-right: 1px solid var(--secFont);
+    }
+}
+/* Large devices */
+@media screen and (min-width: 992px) {
+    
+}
+/* Extra large devices */
+@media screen and (min-width: 1200px) {
+
 }

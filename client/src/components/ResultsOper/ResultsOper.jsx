@@ -25,7 +25,10 @@ export default function ResultsOper () {
     return (
         <div className={style.contResultsOper}>
             {
-                results.length > 0 && results.map((oper, index) => {
+                typeof(results) === 'string' ? <h1>No results</h1> : <></>
+            }
+            {
+                typeof(results) === 'object' && results.length > 0 && results.map((oper, index) => {
                     return (
                         <CardOper key={index} oper={oper} edit/>
                     )

@@ -25,7 +25,10 @@ export default function LastRecords () {
     return (
         <div className={style.contLastRecords}>
             {
-                lastRecords?.map((oper, index) => {
+                typeof(lastRecords) === 'string' ? <h1>No results</h1> : <></>
+            }
+            {
+                typeof(lastRecords) === 'object' && lastRecords?.map((oper, index) => {
                     return (
                         <CardOper key={index} oper={oper} />
                     )

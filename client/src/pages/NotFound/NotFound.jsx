@@ -14,7 +14,7 @@ export default function NotFound () {
 
     return (
         <div className={style.contNotFound}>
-            <h1>Page not Fount :{'('}</h1>
+            <h1>Page not Found :{'('}</h1>
         </div>
     )
 }

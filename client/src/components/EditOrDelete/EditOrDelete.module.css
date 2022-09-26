@@ -33,7 +33,7 @@
     align-items: center;
     justify-content: space-evenly;
 }
-.contEditOrDelete > div > button {
+.editButton, .deleteButton {
     border: none;
     border-radius: 5px;
     background-color: var(--primary);
@@ -42,6 +42,7 @@
     font-weight: 600;
     font-size: 1em;
     font-family: 'Nunito';
+    transition: all 0.2s ease;
 }
 .contEditOrDelete > button {
     /* border: 1px solid red; */
@@ -52,6 +53,11 @@
     text-decoration: underline;
     color: var(--priFont);
 }
+.deleteButton {
+    background-color: var(--back);
+    color: var(--priFont);
+    border: 1px solid var(--secFont);
+}
 
 @keyframes bornCard {
     from {
@@ -60,4 +66,44 @@
     to {
         transform: translateY(0%);
     }
+}
+
+/* Small devices */
+@media screen and (min-width: 576px) {
+    
+}
+/* Medium devices */
+@media screen and (min-width: 768px) {
+    .contEditOrDelete {
+        width: 40rem;
+        height: 10rem;
+    }
+    .editButton:hover {
+        box-shadow: 0 0 10px var(--primary);
+        cursor: pointer;
+    }
+    .contEditOrDelete > button {
+        cursor: pointer;
+        /* font-weight: 800; */
+        transition:  all 0.2s ease;
+    }
+    .contEditOrDelete > button:hover {
+        font-weight: 800;
+    }
+    .deleteButton {
+        background-color: var(--back);
+        border: 1px solid var(--secFont);
+    }
+    .deleteButton:hover {
+        cursor: pointer;
+        box-shadow: 0 0 10px var(--secFont);
+    }
+}
+/* Large devices */
+@media screen and (min-width: 992px) {
+    
+}
+/* Extra large devices */
+@media screen and (min-width: 1200px) {
+
 }
