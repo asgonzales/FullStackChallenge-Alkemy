@@ -231,10 +231,14 @@ export const signOut = (navigate) => {
         })
         .then(response => {
             toast.dismiss('signOut')
-            // dispatch({
-            //     type: LOGIN_USER,
-            //     payload: false
-            // })
+            dispatch({
+                type: GET_LAST_RECORDS,
+                payload: []
+            })
+            dispatch({
+                type: GET_RESULTS,
+                payload: []
+            })
             localStorage.removeItem('user')
             navigate('/signin')
             toast.success('Come back soon!')
