@@ -27,11 +27,11 @@ Resumen e instalación del proyecto. Este proyecto es un challenge para la acele
 
 ## Dentro de la carpeta api crear un archivo .env con los siguientes valores
 
-    DB_USER(postgres)= usuario de la base de datos
-    DB_PASS(12345)= password de la base de datos
+    DB_USER=usuario de la base de datos
+    DB_PASS=password de la base de datos
     DB_HOST=localhost:5432
-    DB_NAME= nombre de la base de datos
-    KEY_JWT= finnapp
+    DB_NAME=nombre de la base de datos
+    KEY_JWT=finnapp
     CORS_ORIGIN=http://localhost:3000
 
 ## Ejecutar los siguientes comandos
