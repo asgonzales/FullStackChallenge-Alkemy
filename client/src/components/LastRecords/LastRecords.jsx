@@ -25,7 +25,7 @@ export default function LastRecords () {
     return (
         <div className={style.contLastRecords}>
             {
-                typeof(lastRecords) === 'string' ? <h1>No results</h1> : <></>
+                typeof(lastRecords) === 'string' ? <h1>No operations</h1> : <></>
             }
             {
                 typeof(lastRecords) === 'object' && lastRecords?.map((oper, index) => {

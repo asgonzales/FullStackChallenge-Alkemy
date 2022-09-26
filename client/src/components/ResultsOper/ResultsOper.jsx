@@ -19,7 +19,7 @@ export default function ResultsOper () {
     return (
         <div className={style.contResultsOper}>
             {
-                typeof(results) === 'string' ? <h1>No results</h1> : <></>
+                typeof(results) === 'string' ? <h1>No operations</h1> : <></>
             }
             {
                 typeof(results) === 'object' && results.length > 0 && results.map((oper, index) => {

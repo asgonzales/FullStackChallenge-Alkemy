@@ -18,8 +18,10 @@
 }
 .editDiv {
     width: 10%;
+    min-width: 3rem;
 }
 .editDiv > button {
+    width: 100%;
     font-family: 'Nunito';
     font-weight: 600;
     color: white;
@@ -33,10 +35,11 @@
     color: white;
     background-color: var(--secFont);
 }
-.dataDiv {
+.dataDiv {  
     display: flex;
     flex-direction: column;
     justify-content: center;
+    min-width: 5rem;
 }
 .dataDiv > input {
     background-color: transparent;
@@ -58,6 +61,7 @@
 }
 .mountDiv {
     width: 25%;
+    min-width: 6rem;
     display: flex;
     justify-content: center;
     align-items: center;
