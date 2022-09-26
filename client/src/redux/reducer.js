@@ -14,7 +14,7 @@ const initialState = {
     // userReg: '',
     // userLogged: false,
     lastRecords: [],
-    totalBalance: '',
+    totalBalance: 0,
     categories: '',
     results: []
 }
