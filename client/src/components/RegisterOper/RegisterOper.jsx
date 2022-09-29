@@ -50,7 +50,7 @@ export default function RegisterOper ({closePortal, loadOper}) {
         }
     }
     useEffect(() => {
-        console.log(errors)
+        // console.log(errors)
         if(( !errors.concept && !errors.mount && !errors.date && !errors.type && !errors.categoryId) || loadOper) document.getElementById('inputButton').disabled = false;
         else document.getElementById('inputButton').disabled = true; 
     }, [operation.concept, operation.mount, operation.date, operation.type, operation.categoryId, errors.categoryId, errors.type, errors.date, errors.mount, errors.concept, loadOper])

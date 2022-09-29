@@ -15,6 +15,7 @@ export default function SearchBar () {
     const dispatch = useDispatch()
     const [type, setType] = useState('')
     const [category, setCategory] = useState('')
+    const [concept, setConcept] = useState('')
 
     const categories = useSelector(state => state.categories)
 
@@ -28,15 +29,26 @@ export default function SearchBar () {
     const handleCategory = (e) => {
         setCategory(e.target.value)
     }
+    const handleConcept = (e) => {
+        setConcept(e.target.value)
+    }
 
+
+    const search = () => {
+        dispatch(getResults(type, category, concept))
+    }
     useEffect(() => {
-        dispatch(getResults(type, category))
+        dispatch(getResults(type, category, concept))
     }, [type, category, dispatch])
 
 
     return (
         <div className={style.contSearchBar}>
             <h1>Filter by</h1>
+            <div>
+                <input type="text" name='concept' onChange={handleConcept} />
+                <input type='button' name='searchbtn' onClick={search} />
+            </div>
             <div>
                 <select name="type" id="type" onChange={handleType}>
                     <option hidden>Type</option>

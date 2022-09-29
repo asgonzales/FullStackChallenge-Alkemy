@@ -1,7 +1,7 @@
 const { Operation, User, Category } = require('../../db.js');
 const jwt = require('jsonwebtoken');
 const { KEY_JWT } = process.env;
-
+const { Op } = require('sequelize')
 
 
 
@@ -61,12 +61,18 @@ const getAllOperation = async (req, res) => {
 }
 
 const getByFilter = async (req, res) => {
-    const { type, categoryId } = req.query
+    const { type, categoryId, concept } = req.query
     const { token } = req.cookies
     let whereCond = {}
 
     try {
 
+        if(!!concept)whereCond = {
+            ...whereCond,
+            concept : {
+                [Op.iLike]: `%${concept}%`
+            }
+        }
         if(!!type) whereCond = { ...whereCond, type: type}
         if(!!categoryId) whereCond = { ...whereCond, categoryId: categoryId}
         
@@ -76,8 +82,12 @@ const getByFilter = async (req, res) => {
                 isActive: 'true',
                 userId: jwt.verify(token, KEY_JWT).id
             },
-            include: { model: Category },
-            order: [['id', 'desc']]
+            include: {
+                model: Category,
+                attributes: ['id', 'name']
+            },
+            order: [['id', 'desc']],
+            attributes: ['id', 'concept', 'mount', 'date', 'type']
         })
         return res.status(200).json(operations)
     } catch (err) {
