@@ -14,13 +14,13 @@ const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 axios.defaults.withCredentials = true;
 
-export const registerUser = (email, password, navigate) => {
+export const registerUser = (newUser, navigate) => {
     toast.loading('Loading', { id: 'register' })
     return (dispatch) => {
         axios({
             method: 'POST',
             url: `${BASE_URL}/user/signup`,
-            data: {email, password}
+            data: newUser
         })
         .then(response => {
             dispatch({
@@ -69,7 +69,7 @@ export const signGoogle = (credential, navigate) => {
         axios({
             method: 'POST',
             url:`${BASE_URL}/user/signGoogle`,
-            data: credential
+            data: { credential }
         })
         .then(response => {
             localStorage.setItem('user', 'true')

@@ -15,7 +15,7 @@ export default function SignGoogle () {
     const navigate = useNavigate()
 
     function handleCallBackResponse (response) {
-        console.log(response.credential)
+        // console.log(response.credential)
         dispatch(signGoogle(response.credential, navigate))
     }
 
