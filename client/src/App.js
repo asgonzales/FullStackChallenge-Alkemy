@@ -31,7 +31,7 @@ function App() {
       </Route>
       <Route path='*' element={<NotFound/>} />
     </Routes>
-    <CookieConsent >This site use cookies</CookieConsent>
+    <CookieConsent disableStyles={true} contentClasses='cookieContent' buttonClasses='cookieButton' containerClasses='cookieContainer' debug={true} >FinnApp use cookies to improve your experience</CookieConsent>
     <Toaster />
     </div>
   );
