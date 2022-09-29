@@ -46,18 +46,20 @@ export default function SearchBar () {
             [e.target.name]: e.target.value
         })
     }
-    // const handleDate = (e) => {
-    //     setDate({
-    //         [e.target.name]: e.target.value
-    //     })
-    // }
+    const handleDate = (e) => {
+        setDate({
+            ...date,
+            [e.target.name]: e.target.value
+        })
+    }
 
 
     const search = () => {
-        dispatch(getResults(type, category, concept, mount.min, mount.max))
+        console.log(date)
+        dispatch(getResults(type, category, concept, mount.min, mount.max, date.min, date.max))
     }
     useEffect(() => {
-        dispatch(getResults(type, category, concept, mount.min, mount.max))
+        dispatch(getResults(type, category, concept, mount.min, mount.max, date.min, date.max))
     }, [type, category, dispatch])
 
 
@@ -65,7 +67,7 @@ export default function SearchBar () {
         <div className={style.contSearchBar}>
             <h1>Filter by</h1>
             <div>
-                <input type="text" name='concept' onChange={handleConcept} />
+                <input type="text" name='concept' placeholder='Concept...' onChange={handleConcept} />
                 <button onClick={search} >Search</button>
             </div>
             <div>
@@ -88,12 +90,12 @@ export default function SearchBar () {
                 </select>
             </div>
             <div>
-                <input type="number" name='min' onChange={handleMount} />
-                <input type="number" name='max' onChange={handleMount} />
+                <input type="number" name='min' placeholder='Min Mount' onChange={handleMount} />
+                <input type="number" name='max' placeholder='Max Mount' onChange={handleMount} />
             </div>
             <div>
-                {/* <input type="date" name='minDate' onChange={handleDate} /> */}
-                {/* <input type="date" name='maxDate' onChange={handleDate} /> */}
+                <input type="date" name='min' onChange={handleDate} />
+                <input type="date" name='max' onChange={handleDate} />
             </div>
         </div>
     )

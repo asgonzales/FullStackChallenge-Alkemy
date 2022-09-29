@@ -183,6 +183,8 @@ export const getResults = (type, categoryId, concept, minMount, maxMount, minDat
     if(!!concept) url.searchParams.append('concept', concept)
     if(!!minMount) url.searchParams.append('minMount', minMount)
     if(!!maxMount) url.searchParams.append('maxMount', maxMount)
+    if(!!minDate) url.searchParams.append('minDate', minDate)
+    if(!!maxDate) url.searchParams.append('maxDate', maxDate)
 
     return (dispatch) => {
             axios({

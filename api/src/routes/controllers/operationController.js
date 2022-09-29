@@ -61,7 +61,7 @@ const getAllOperation = async (req, res) => {
 }
 
 const getByFilter = async (req, res) => {
-    const { type, categoryId, concept, minMount, maxMount } = req.query
+    const { type, categoryId, concept, minMount, maxMount, minDate, maxDate } = req.query
     const { token } = req.cookies
     let whereCond = {}
 
@@ -85,6 +85,18 @@ const getByFilter = async (req, res) => {
             ...whereCond,
             mount: {
                 [Op.lt]: maxMount
+            }
+        }
+        if(!!minDate) whereCond = {
+            ...whereCond,
+            date: {
+                [Op.gt]: minDate
+            }
+        }
+        if(!!maxDate) whereCond = {
+            ...whereCond,
+            date: {
+                [Op.lt]: maxDate
             }
         }
         
