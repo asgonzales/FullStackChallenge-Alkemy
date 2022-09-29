@@ -61,6 +61,28 @@ export const loginUser = (email, password, navigate) => {
         })
     }
 }
+export const signGoogle = (credential, navigate) => {
+    toast.loading('Logging In', {
+        id:'signGoogle'
+    })
+    return(dispatch) => {
+        axios({
+            method: 'POST',
+            url:`${BASE_URL}/user/signGoogle`,
+            data: credential
+        })
+        .then(response => {
+            localStorage.setItem('user', 'true')
+            toast.dismiss('signGoogle')
+            toast.success('Welcome!')
+            navigate('/home')
+        })
+        .catch(err => {
+            toast.dismiss('signGoogle')
+            toast.error(err.response.data.error)
+        })
+    }
+}
 export const getLastRecords = () => {
     toast.loading('Searching records...', {
         id: 'LastRecords'
