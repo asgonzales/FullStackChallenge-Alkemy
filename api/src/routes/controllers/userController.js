@@ -32,6 +32,9 @@ const loginUser = async (req, res) => {
         const user = await User.findOne({where: {email: email}})
         if(!user) return res.status(400).json({error: 'The user does not exist'})
 
+        // console.log('pass', user.password)
+        if(!user.password) return res.status(400).json({ error: 'User registered with Google'})
+
         if(bcrypt.compareSync(password, user.password)) {
             //Crear Token
             const token = jwt.sign({id: user.id}, KEY_JWT, {expiresIn: '3h'})
