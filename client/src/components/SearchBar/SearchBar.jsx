@@ -16,6 +16,14 @@ export default function SearchBar () {
     const [type, setType] = useState('')
     const [category, setCategory] = useState('')
     const [concept, setConcept] = useState('')
+    const [mount, setMount] = useState({
+        min: '',
+        max: ''
+    })
+    const [date, setDate] = useState({
+        min: '',
+        max: ''
+    })
 
     const categories = useSelector(state => state.categories)
 
@@ -32,13 +40,24 @@ export default function SearchBar () {
     const handleConcept = (e) => {
         setConcept(e.target.value)
     }
+    const handleMount = (e) => {
+        setMount({
+            ...mount,
+            [e.target.name]: e.target.value
+        })
+    }
+    // const handleDate = (e) => {
+    //     setDate({
+    //         [e.target.name]: e.target.value
+    //     })
+    // }
 
 
     const search = () => {
-        dispatch(getResults(type, category, concept))
+        dispatch(getResults(type, category, concept, mount.min, mount.max))
     }
     useEffect(() => {
-        dispatch(getResults(type, category, concept))
+        dispatch(getResults(type, category, concept, mount.min, mount.max))
     }, [type, category, dispatch])
 
 
@@ -47,7 +66,7 @@ export default function SearchBar () {
             <h1>Filter by</h1>
             <div>
                 <input type="text" name='concept' onChange={handleConcept} />
-                <input type='button' name='searchbtn' onClick={search} />
+                <button onClick={search} >Search</button>
             </div>
             <div>
                 <select name="type" id="type" onChange={handleType}>
@@ -67,6 +86,14 @@ export default function SearchBar () {
                         })
                     }
                 </select>
+            </div>
+            <div>
+                <input type="number" name='min' onChange={handleMount} />
+                <input type="number" name='max' onChange={handleMount} />
+            </div>
+            <div>
+                {/* <input type="date" name='minDate' onChange={handleDate} /> */}
+                {/* <input type="date" name='maxDate' onChange={handleDate} /> */}
             </div>
         </div>
     )

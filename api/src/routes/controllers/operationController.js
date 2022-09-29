@@ -61,20 +61,32 @@ const getAllOperation = async (req, res) => {
 }
 
 const getByFilter = async (req, res) => {
-    const { type, categoryId, concept } = req.query
+    const { type, categoryId, concept, minMount, maxMount } = req.query
     const { token } = req.cookies
     let whereCond = {}
 
     try {
 
-        if(!!concept)whereCond = {
+        if(!!type) whereCond = { ...whereCond, type: type}
+        if(!!categoryId) whereCond = { ...whereCond, categoryId: categoryId}
+        if(!!concept) whereCond = {
             ...whereCond,
             concept : {
                 [Op.iLike]: `%${concept}%`
             }
         }
-        if(!!type) whereCond = { ...whereCond, type: type}
-        if(!!categoryId) whereCond = { ...whereCond, categoryId: categoryId}
+        if(!!minMount) whereCond = {
+            ...whereCond,
+            mount: {
+                [Op.gt]: minMount
+            }
+        }
+        if(!!maxMount) whereCond = {
+            ...whereCond,
+            mount: {
+                [Op.lt]: maxMount
+            }
+        }
         
         const operations = await Operation.findAll({
             where: {

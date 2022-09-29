@@ -173,7 +173,7 @@ export const getCategories = () => {
         }
     }
 }
-export const getResults = (type, categoryId, concept, minPrice, maxPrice, minDate, maxDate) => {
+export const getResults = (type, categoryId, concept, minMount, maxMount, minDate, maxDate) => {
     toast.loading('Searching operations', {
         id: 'getResults'
     })
@@ -181,6 +181,9 @@ export const getResults = (type, categoryId, concept, minPrice, maxPrice, minDat
     if(!!type) url.searchParams.append('type', type)
     if(!!categoryId) url.searchParams.append('categoryId', categoryId)
     if(!!concept) url.searchParams.append('concept', concept)
+    if(!!minMount) url.searchParams.append('minMount', minMount)
+    if(!!maxMount) url.searchParams.append('maxMount', maxMount)
+
     return (dispatch) => {
             axios({
                 method: 'GET',
