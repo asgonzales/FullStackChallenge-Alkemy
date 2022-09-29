@@ -9,14 +9,14 @@ const jwtscnd = require('jwt-decode');
 
 
 const registerUser = async (req, res) => {
-    const { email, password } = req.body;
+    const { email, name, password } = req.body;
     try {
         const exist = await User.findOne({where: {email: email}})
         if(exist) return res.status(400).json({error: 'User already exist'})
         
         const passCrypt = bcrypt.hashSync(password, 10);
 
-        await User.create({email, password: passCrypt})
+        await User.create({email, name, password: passCrypt})
     
         return res.status(200).json({register: true})
 
@@ -32,14 +32,14 @@ const loginUser = async (req, res) => {
         const user = await User.findOne({where: {email: email}})
         if(!user) return res.status(400).json({error: 'The user does not exist'})
 
-        // console.log('pass', user.password)
+        // console.log('user', user)
         if(!user.password) return res.status(400).json({ error: 'User registered with Google'})
 
         if(bcrypt.compareSync(password, user.password)) {
             //Crear Token
             const token = jwt.sign({id: user.id}, KEY_JWT, {expiresIn: '3h'})
             res.cookie('token', token, { sameSite: 'none', secure: true })
-            return res.status(200).json({ token: token})
+            return res.status(200).json({ token: token, name: user.name })
         }
         else return res.status(400).json({error: 'Incorrect password'})
 
@@ -58,7 +58,7 @@ const signGoogle = async (req, res) => {
         // console.log('NUEVO USUARIO', user)
         const token = jwt.sign({ id: user[0].dataValues.id }, KEY_JWT, {expiresIn: '3h'})
         res.cookie('token', token, {sameSite: 'none', secure: true })
-        return res.status(200).json({ token: token })
+        return res.status(200).json({ token: token, name: user[0].dataValues.name })
     } catch (err) {
         // console.log(err)
         return res.status(400).json({ error: err.message })

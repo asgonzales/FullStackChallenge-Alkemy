@@ -50,9 +50,10 @@ export const loginUser = (email, password, navigate) => {
             //     type: LOGIN_USER,
             //     payload: true
             // })
-            localStorage.setItem('user', 'true')
+            // console.log(response.data)
+            localStorage.setItem('user', JSON.stringify({session: true, name: response.data.name}))
             toast.dismiss('login')
-            toast.success('Welcome!')
+            toast.success(`Welcome ${response.data.name}!`)
             navigate('/home')
         })
         .catch(err => {
@@ -72,9 +73,9 @@ export const signGoogle = (credential, navigate) => {
             data: { credential }
         })
         .then(response => {
-            localStorage.setItem('user', 'true')
+            localStorage.setItem('user', JSON.stringify({session: true, name: response.data.name}))
             toast.dismiss('signGoogle')
-            toast.success('Welcome!')
+            toast.success(`Welcome ${response.data.name}!`)
             navigate('/home')
         })
         .catch(err => {
