@@ -37,7 +37,7 @@ const loginUser = async (req, res) => {
 
         if(bcrypt.compareSync(password, user.password)) {
             //Crear Token
-            const token = jwt.sign({id: user.id}, KEY_JWT, {expiresIn: '3h'})
+            const token = jwt.sign({id: user.id}, KEY_JWT, {expiresIn: '10s'})
             res.cookie('token', token, { sameSite: 'none', secure: true })
             return res.status(200).json({ token: token, name: user.name })
         }
