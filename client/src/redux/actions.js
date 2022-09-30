@@ -102,6 +102,8 @@ export const getLastRecords = () => {
             })
             .catch (err => {
                 toast.dismiss('LastRecords')
+                // console.log('ERROR', err.response.data.sessionEnd)
+                if(err.response.data.sessionEnd) endSession(dispatch)
                 toast.err(err.response.data.error)
             })
     }
@@ -125,6 +127,7 @@ export const getBalance = () => {
         .catch(err => {
             toast.dismiss('LastRecords')
             toast.error(err.response.data.error)
+            if(err.response.data.sessionEnd) endSession(dispatch)
         })
     }
 }
@@ -152,6 +155,7 @@ export const registerOperation = (operation, closePortal) => {
             .catch(err => {
                 toast.dismiss('registerOperation')
                 toast.error(err.response.data.error)
+                if(err.response.data.sessionEnd) endSession(dispatch)
             })
     }
 }
@@ -201,6 +205,7 @@ export const getResults = (type, categoryId, concept, minMount, maxMount, minDat
             .catch(err => {
                 toast.dismiss('getResults')
                 toast.error(err.response.data.error)
+                if(err.response.data.sessionEnd) endSession(dispatch)
             })
     }
 }
@@ -223,6 +228,7 @@ export const updateOperation = (operation, closePortal) => {
             .catch(err => {
                 toast.dismiss('updateOperation')
                 toast.error(err.response.data.error)
+                if(err.response.data.sessionEnd) endSession(dispatch)
             })
     }
 }
@@ -244,8 +250,8 @@ export const deleteOperation = (operationId, closePortal) => {
             })
             .catch(err => {
                 toast.dismiss('deleteOperation')
-                
                 toast.error(err.response.data.error)
+                if(err.response.data.sessionEnd) endSession(dispatch)
             })
     }
 }
@@ -260,19 +266,20 @@ export const signOut = (navigate) => {
         })
         .then(response => {
             toast.dismiss('signOut')
-            dispatch({
-                type: GET_LAST_RECORDS,
-                payload: []
-            })
-            dispatch({
-                type: GET_RESULTS,
-                payload: []
-            })
-            dispatch({
-                type: GET_BALANCE,
-                payload: 0
-            })
-            localStorage.removeItem('user')
+            // dispatch({
+            //     type: GET_LAST_RECORDS,
+            //     payload: []
+            // })
+            // dispatch({
+            //     type: GET_RESULTS,
+            //     payload: []
+            // })
+            // dispatch({
+            //     type: GET_BALANCE,
+            //     payload: 0
+            // })
+            // localStorage.removeItem('user')
+            endSession(dispatch)
             navigate('/signin')
             toast.success('Come back soon!')
         })
@@ -282,3 +289,21 @@ export const signOut = (navigate) => {
         })
     }
 }
+
+function endSession (dispatch) {
+    dispatch({
+        type: GET_LAST_RECORDS,
+        payload: []
+    })
+    dispatch({
+        type: GET_RESULTS,
+        payload: []
+    })
+    dispatch({
+        type: GET_BALANCE,
+        payload: 0
+    })
+    localStorage.removeItem('user')
+    window.location.reload(false)
+}
+

@@ -13,7 +13,7 @@ import style from './NavBar.module.css';
 
 export default function NavBar () {
     const dispatch = useDispatch()
-    const nameUser = JSON.parse(localStorage.getItem('user')).name
+    const nameUser = JSON.parse(localStorage.getItem('user'))?.name
 
     const navigate = useNavigate()
     const [openNavBar, setOpenNavBar] = useState(false)
