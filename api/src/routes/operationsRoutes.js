@@ -7,7 +7,8 @@ const {
     getLastRecords,
     getTotal,
     deleteOperation,
-    getByFilter
+    getByFilter,
+    getStatistics
 } = require('./controllers/operationController.js');
 const verify = require('./middlewares/userMiddleware.js');
 
@@ -32,6 +33,7 @@ operationRoutes.get('/lastrecords', verify, getLastRecords)
 
 operationRoutes.get('/total', verify, getTotal)
 
+operationRoutes.get('/statistics', verify, getStatistics)
 
 module.exports = {
     operationRoutes

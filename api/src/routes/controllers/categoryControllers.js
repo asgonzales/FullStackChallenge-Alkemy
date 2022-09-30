@@ -9,10 +9,10 @@ const { Category } = require('../../db.js');
 
 const createCategory = async (req, res) => {
 
-    const { name } = req.body;
+    const { name, type } = req.body;
 
     try {
-        const newCategory = await Category.create({name})
+        const newCategory = await Category.create({name, type})
         return res.status(200).json(newCategory)
     } catch( err ) {
         return res.status(400).json({error: err.message})
