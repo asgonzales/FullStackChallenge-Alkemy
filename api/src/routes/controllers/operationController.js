@@ -1,7 +1,7 @@
 const { Operation, User, Category } = require('../../db.js');
 const jwt = require('jsonwebtoken');
 const { KEY_JWT } = process.env;
-const { Op } = require('sequelize')
+const { Op, where } = require('sequelize')
 
 
 
@@ -78,24 +78,28 @@ const getByFilter = async (req, res) => {
         if(!!minMount) whereCond = {
             ...whereCond,
             mount: {
+                ...whereCond.mount,
                 [Op.gt]: minMount
             }
         }
         if(!!maxMount) whereCond = {
             ...whereCond,
             mount: {
+                ...whereCond.mount,
                 [Op.lt]: maxMount
             }
         }
         if(!!minDate) whereCond = {
             ...whereCond,
             date: {
+                ...whereCond.date,
                 [Op.gt]: minDate
             }
         }
         if(!!maxDate) whereCond = {
             ...whereCond,
             date: {
+                ...whereCond.date,
                 [Op.lt]: maxDate
             }
         }
