@@ -33,7 +33,9 @@ export const registerUser = (newUser, navigate) => {
         })
         .catch(err => {
             toast.dismiss('register')
-            toast.error(err.response.data.error)
+            toast.error(err.response.data.error, {
+                id: 'error'
+            })
         })
     }
 }
@@ -58,7 +60,9 @@ export const loginUser = (email, password, navigate) => {
         })
         .catch(err => {
             toast.dismiss('login')
-            toast.error(err.response.data.error)
+            toast.error(err.response.data.error, {
+                id: 'error'
+            })
         })
     }
 }
@@ -80,7 +84,9 @@ export const signGoogle = (credential, navigate) => {
         })
         .catch(err => {
             toast.dismiss('signGoogle')
-            toast.error(err.response.data.error)
+            toast.error(err.response.data.error, {
+                id: 'error'
+            })
         })
     }
 }
@@ -104,7 +110,9 @@ export const getLastRecords = () => {
                 toast.dismiss('LastRecords')
                 // console.log('ERROR', err.response.data.sessionEnd)
                 if(err.response.data.sessionEnd) endSession(dispatch)
-                toast.err(err.response.data.error)
+                toast.err(err.response.data.error, {
+                    id: 'error'
+                })
             })
     }
 }
@@ -126,7 +134,9 @@ export const getBalance = () => {
         })
         .catch(err => {
             toast.dismiss('LastRecords')
-            toast.error(err.response.data.error)
+            toast.error(err.response.data.error, {
+                id: 'error'
+            })
             if(err.response.data.sessionEnd) endSession(dispatch)
         })
     }
@@ -154,7 +164,9 @@ export const registerOperation = (operation, closePortal) => {
             })
             .catch(err => {
                 toast.dismiss('registerOperation')
-                toast.error(err.response.data.error)
+                toast.error(err.response.data.error, {
+                    id: 'error'
+                })
                 if(err.response.data.sessionEnd) endSession(dispatch)
             })
     }
@@ -204,7 +216,9 @@ export const getResults = (type, categoryId, concept, minMount, maxMount, minDat
             })
             .catch(err => {
                 toast.dismiss('getResults')
-                toast.error(err.response.data.error)
+                toast.error(err.response.data.error, {
+                    id: 'error'
+                })
                 if(err.response.data.sessionEnd) endSession(dispatch)
             })
     }
@@ -227,7 +241,9 @@ export const updateOperation = (operation, closePortal) => {
             })
             .catch(err => {
                 toast.dismiss('updateOperation')
-                toast.error(err.response.data.error)
+                toast.error(err.response.data.error, {
+                    id: 'error'
+                })
                 if(err.response.data.sessionEnd) endSession(dispatch)
             })
     }
@@ -250,7 +266,9 @@ export const deleteOperation = (operationId, closePortal) => {
             })
             .catch(err => {
                 toast.dismiss('deleteOperation')
-                toast.error(err.response.data.error)
+                toast.error(err.response.data.error, {
+                    id: 'error'
+                })
                 if(err.response.data.sessionEnd) endSession(dispatch)
             })
     }
@@ -285,7 +303,9 @@ export const signOut = (navigate) => {
         })
         .catch(err => {
             toast.dismiss('signOut')
-            toast.error(err.response.data.error)
+            toast.error(err.response.data.error, {
+                id: 'error'
+            })
         })
     }
 }
