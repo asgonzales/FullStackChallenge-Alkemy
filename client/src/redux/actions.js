@@ -8,6 +8,7 @@ export const GET_BALANCE = 'GET_BALANCE';
 export const REGISTER_OPERATION = 'REGISTER_OPERATION';
 export const GET_CATEGORIES = 'GET_CATEGORIES';
 export const GET_RESULTS = 'GET_RESULTS';
+export const GET_STATISTICS = 'GET_STATISTICS';
 
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -308,6 +309,30 @@ export const signOut = (navigate) => {
             toast.error(err.response.data.error, {
                 id: 'error'
             })
+        })
+    }
+}
+export const getStatistics = () => {
+    toast.loading('Getting statistics', {
+        id: 'GET_STATISTICS'
+    })
+    const url = new URL(`${BASE_URL}/operation/statistics`)
+    return (dispatch) => {
+        axios({
+            method: 'GET',
+            url: url.href
+        })
+        .then(response => {
+            dispatch({
+                type: GET_STATISTICS,
+                payload: response.data
+            })
+            toast.dismiss('GET_STATISTICS')
+        })
+        .catch(err => {
+            toast.dismiss('GET_STATISTICS')
+            toast.error(err.response.data.error)
+            console.log(err.response.data.error)
         })
     }
 }

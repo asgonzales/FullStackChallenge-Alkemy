@@ -1,10 +1,11 @@
 import {
-    REGISTER_USER,
-    LOGIN_USER,
+    // REGISTER_USER,
+    // LOGIN_USER,
     GET_LAST_RECORDS,
     GET_BALANCE,
     GET_CATEGORIES,
-    GET_RESULTS
+    GET_RESULTS,
+    GET_STATISTICS
 } from "./actions"
 
 
@@ -16,7 +17,8 @@ const initialState = {
     lastRecords: [],
     totalBalance: 0,
     categories: '',
-    results: []
+    results: [],
+    stats: []
 }
 
 
@@ -46,6 +48,10 @@ export const reducer = (state = initialState, action) => {
         case GET_RESULTS: return {
             ...state,
             results: action.payload
+        }
+        case GET_STATISTICS: return {
+            ...state,
+            stats: action.payload
         }
     
         default: return state

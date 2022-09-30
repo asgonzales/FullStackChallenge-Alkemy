@@ -39,6 +39,7 @@ export default function NavBar () {
                         <h3>Welcome {nameUser}</h3>
                         <Link onClick={handleNavBar} className={style.link} to='/home'>Home</Link>
                         <Link onClick={handleNavBar} className={style.link} to='/history'>History</Link>
+                        <Link onClick={handleNavBar} className={style.link} to='/statistics'>Statistics</Link>
                         <button onClick={handleTheme}>{theme?'Dark mode': 'Light mode'}</button>
                         <button onClick={handlerSignOut}>Sign Out</button>
                     </div>

@@ -10,6 +10,7 @@ import CookieConsent from 'react-cookie-consent';
 import { Toaster } from 'react-hot-toast';
 import NotFound from './pages/NotFound/NotFound';
 import UserLogged from './helpers/UserLogged/UserLooged';
+import Statistics from './pages/Statistics/Statistics';
 
 function App() {
   const { pathname } = useLocation()
@@ -17,9 +18,9 @@ function App() {
   return (
     <div className="App">
       {
-        pathname.toLowerCase() === '/home' || pathname.toLocaleLowerCase() === '/history' ?
-        <NavBar/>
-        : <></>
+        pathname.toLowerCase() === '/signin' || pathname.toLocaleLowerCase() === '/signup' ?
+        <></>
+        : <NavBar/>
       }
     <Routes>
       <Route path='/' element={<Landing />} />
@@ -28,6 +29,7 @@ function App() {
       <Route element={<UserLogged />} >
         <Route path='/home' element={<Home />}/>
         <Route path='/history' element={<History />}/>
+        <Route path='/statistics' element={<Statistics />} />
       </Route>
       <Route path='*' element={<NotFound/>} />
     </Routes>
