@@ -13,7 +13,7 @@ const verify = (req, res, next) => {
         // if(!prueba) return res.status(400).json({ error: 'Su sesión expiró', session: false})
 
 
-        newToken = jwt.sign({ id: prueba.id }, KEY_JWT, { expiresIn: '10s'})
+        newToken = jwt.sign({ id: prueba.id }, KEY_JWT, { expiresIn: '3h'})
         res.cookie('token', newToken, { sameSite: 'none', secure: true})
         next()
     } catch (err) {
