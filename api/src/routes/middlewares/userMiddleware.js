@@ -8,15 +8,16 @@ const verify = (req, res, next) => {
         const prueba = jwt.verify(token, KEY_JWT)
         let newToken = {}
 
-        if(!prueba) res.status(400).json({ error: 'Su sesión expiró', session: false})
+        // console.log( 'PRUEBA', jwt.verify(token, KEY_JWT))
 
-        // console.log( 'PRUEBA', prueba)
+        // if(!prueba) return res.status(400).json({ error: 'Su sesión expiró', session: false})
+
 
         newToken = jwt.sign({ id: prueba.id }, KEY_JWT, { expiresIn: '10s'})
         res.cookie('token', newToken, { sameSite: 'none', secure: true})
         next()
     } catch (err) {
-        return res.status(400).json({ error: err.message })
+        return res.status(400).json({ error: 'Su sesión expiró', sessionEnd: true })
     }
 }
 
