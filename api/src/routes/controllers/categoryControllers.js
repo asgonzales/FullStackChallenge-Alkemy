@@ -21,10 +21,13 @@ const createCategory = async (req, res) => {
 }
 
 const getCategories = async (req, res) => {
-
+    const { type } = req.query
     try {
-
-        const categories = await Category.findAll()
+        const categories = await Category.findAll({
+            where: {
+                type: type
+            }
+        })
         return res.status(200).json(categories)
 
     } catch( err ) {

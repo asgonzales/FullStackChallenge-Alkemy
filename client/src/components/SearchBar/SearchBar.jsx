@@ -28,8 +28,8 @@ export default function SearchBar () {
     const categories = useSelector(state => state.categories)
 
     useEffect(() => {
-        dispatch(getCategories())
-    }, [dispatch])
+        dispatch(getCategories(type))
+    }, [dispatch, type])
 
     const handleType = (e) => {
         setType(e.target.value)
@@ -55,7 +55,6 @@ export default function SearchBar () {
 
 
     const search = () => {
-        console.log(date)
         dispatch(getResults(type, category, concept, mount.min, mount.max, date.min, date.max))
     }
     useEffect(() => {
@@ -77,7 +76,7 @@ export default function SearchBar () {
                     <option value="ingreso">ingreso</option>
                     <option value="egreso">egreso</option>
                 </select>
-                <select name="category" id="category" onChange={handleCategory}>
+                <select name="category" id="category" onChange={handleCategory} disabled={type===''?true:false} >
                     <option hidden>Category</option>
                     <option value=''>Todos</option>
                     {

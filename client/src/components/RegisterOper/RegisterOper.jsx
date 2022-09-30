@@ -32,8 +32,8 @@ export default function RegisterOper ({closePortal, loadOper}) {
     })
 
     useEffect(() => {
-        dispatch(getCategories())
-    }, [dispatch])
+        dispatch(getCategories(operation.type))
+    }, [dispatch, operation.type])
 
     const handleOper = (e) => {
         setOperation({
@@ -74,7 +74,7 @@ export default function RegisterOper ({closePortal, loadOper}) {
                         <option value="egreso">egreso</option>
                         <option value="ingreso">ingreso</option>
                     </select>
-                    <select className={style.input} name="categoryId" id="category" onChange={handleOper} value={operation.categoryId}>
+                    <select className={style.input} name="categoryId" id="category" onChange={handleOper} value={operation.categoryId} disabled={operation.type===''?true:false}>
                         <option value="none" hidden>Select a category</option>
                         {
                             categories.length > 0 && categories.map((val, index )=> {

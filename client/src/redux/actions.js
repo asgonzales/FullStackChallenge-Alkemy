@@ -171,12 +171,14 @@ export const registerOperation = (operation, closePortal) => {
             })
     }
 }
-export const getCategories = () => {
+export const getCategories = (type) => {
+    const url = new URL(`${BASE_URL}/category`)
+    url.searchParams.append('type', type)
     return (dispatch) => {
         try {
             axios({
                 method: 'GET',
-                url: `${BASE_URL}/category`
+                url: url.href
             })
             .then(response => {
                 dispatch({
