@@ -3,7 +3,7 @@ const { KEY_JWT } = process.env;
 
 const verify = (req, res, next) => {
     const { token } = req.cookies
-    if(!token) return res.status(400).json({ error: 'Acceso Denegado'})
+    if(!token) return res.status(400).json({ error: 'Acceso Denegado', sessionEnd: true})
     try {
         const prueba = jwt.verify(token, KEY_JWT)
         let newToken = {}

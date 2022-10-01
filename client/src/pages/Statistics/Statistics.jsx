@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import StatsGraph from '../../components/StatsGraph/StatsGraph';
 import style from './Statistics.module.css';
@@ -11,6 +12,9 @@ import style from './Statistics.module.css';
 
 export default function Statistics () {
 
+    useEffect(() => {
+        document.title = 'FinnApp | Stats'
+    }, [])
 
 
 
