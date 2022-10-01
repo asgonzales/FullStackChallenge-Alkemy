@@ -11,6 +11,7 @@ import { Toaster } from 'react-hot-toast';
 import NotFound from './pages/NotFound/NotFound';
 import UserLogged from './helpers/UserLogged/UserLooged';
 import Statistics from './pages/Statistics/Statistics';
+import About from './pages/About/About.jsx';
 import backimg from './media/500x500Circle.png';
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
           <Route path='/home' element={<Home />}/>
           <Route path='/history' element={<History />}/>
           <Route path='/statistics' element={<Statistics />} />
+          <Route path='/about' element={<About />} />
         </Route>
         <Route path='*' element={<NotFound/>} />
       </Routes>

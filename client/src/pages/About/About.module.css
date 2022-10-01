@@ -1,0 +1,16 @@
+.contAbout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.contAbout > div {
+    /* border: 1px solid red; */
+    margin-top: 2rem;
+}
+
+@media screen and (min-width: 768px) {
+    .divAbt {
+        width: 40rem;
+    }
+}

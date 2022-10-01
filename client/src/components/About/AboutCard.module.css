@@ -1,0 +1,34 @@
+.contAboutCard {
+    /* border: 1px solid red; */
+    width: 100%;
+    /* margin: 1rem; */
+}
+.contAboutCard > div {
+    /* width: 100%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+}
+.contAboutCard > div > h1 {
+    font-family: 'Nunito';
+    font-weight: 800;
+    color: var(--primary);
+    border-bottom: 5px solid var(--primary);
+    
+}
+.contAboutCard > div > h3 {
+    font-family: 'Nunito';
+    font-weight: 600;
+    color: var(--priFont);
+    border-bottom: 1px solid var(--priFont);
+    
+}
+.contAboutCard > div > p {
+    font-family: 'Nunito';
+    font-weight: 600;
+    color: var(--priFont);
+    text-align: center;
+    
+}

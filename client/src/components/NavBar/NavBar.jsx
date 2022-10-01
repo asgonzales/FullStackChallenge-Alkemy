@@ -40,6 +40,7 @@ export default function NavBar () {
                         <Link onClick={handleNavBar} className={style.link} to='/home'>Home</Link>
                         <Link onClick={handleNavBar} className={style.link} to='/history'>History</Link>
                         <Link onClick={handleNavBar} className={style.link} to='/statistics'>Statistics</Link>
+                        <Link onClick={handleNavBar} className={style.link} to='/about'>About</Link>
                         <button onClick={handleTheme}>{theme?'Dark mode': 'Light mode'}</button>
                         <button onClick={handlerSignOut}>Sign Out</button>
                     </div>
