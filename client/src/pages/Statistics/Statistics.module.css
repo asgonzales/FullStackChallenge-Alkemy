@@ -1,5 +1,15 @@
 .contStatistics {
-    border: 1px solid red;
+    /* border: 1px solid red; */
     width: 100%;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.divSearch {
+    height: 15rem;
+}
+.divStats {
+    width: 90%;
 }

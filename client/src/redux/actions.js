@@ -312,11 +312,15 @@ export const signOut = (navigate) => {
         })
     }
 }
-export const getStatistics = () => {
+export const getStatistics = (minDate, maxDate, type, categoryId) => {
     toast.loading('Getting statistics', {
         id: 'GET_STATISTICS'
     })
     const url = new URL(`${BASE_URL}/operation/statistics`)
+    if(!!minDate) url.searchParams.append('minDate', minDate)
+    if(!!maxDate) url.searchParams.append('maxDate', maxDate)
+    if(!!type) url.searchParams.append('type', type)
+    if(!!categoryId) url.searchParams.append('categoryId', categoryId)
     return (dispatch) => {
         axios({
             method: 'GET',
@@ -332,7 +336,7 @@ export const getStatistics = () => {
         .catch(err => {
             toast.dismiss('GET_STATISTICS')
             toast.error(err.response.data.error)
-            console.log(err.response.data.error)
+            // console.log(err.response.data.error)
         })
     }
 }

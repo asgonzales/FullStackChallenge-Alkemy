@@ -65,3 +65,11 @@
     color: white;
     background-color: var(--secFont);
 }
+.contSearchBar > div > label {
+    font-family: 'Nunito';
+    font-weight: 800;
+    color: var(--priFont);
+    width: 40%;
+    /* border: 1px solid red; */
+    text-align: center;
+}
