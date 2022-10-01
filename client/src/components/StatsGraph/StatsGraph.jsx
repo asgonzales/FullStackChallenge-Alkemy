@@ -27,6 +27,14 @@ export default function StatsGraph () {
 
     const r = getComputedStyle(document.body)
 
+    const options = {
+        scales: {
+            x: {
+                offset: true
+            }
+        }
+    }
+
     useEffect(() => {
         dispatch(getStatistics())
     }, [])
@@ -106,10 +114,10 @@ export default function StatsGraph () {
         <div className={style.contStatsGraph}>
             {/* <button onClick={preba}> PRUEBA </button> */}
             <Chart type='bar' data={dataTotal} />
-            <Chart type='bar' data={dataMin} />
-            <Chart type='bar' data={dataMax} />
-            <Chart type='bar' data={dataAvrg} />
-            <Chart type='bar' data={dataCant} />
+            <Chart type='bar' data={dataMin} options={options} />
+            <Chart type='bar' data={dataMax} options={options} />
+            <Chart type='bar' data={dataAvrg} options={options} />
+            <Chart type='bar' data={dataCant} options={options} />
         </div>
     )
 }
