@@ -25,7 +25,7 @@
     overflow: hidden;
     width: 100%;
     height: 100vh;
-    position: absolute;
+    position: fixed;
     top: 0;
     background-color: rgba(0, 0, 0, 0.2);
 }
@@ -36,6 +36,8 @@
     left: 0;
 }
 .contMenu {
+    /* border: 1px solid red; */
+    overflow: scroll;
     border-left: 1px solid var(--secFont);
     box-shadow: -5px 0 15px -5px var(--secFont);
     position: absolute;
@@ -44,14 +46,16 @@
     right: 0;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-evenly;
     background-color: var(--back);
     animation: bornSide 0.5s;
     transition: all 0.2s ease;
 }
 .contMenu > h3 {
-    padding: .5rem 1rem;
+    /* padding: .5rem 1rem; */
+    /* justify-self: flex-start; */
     text-align: center;
+    /* border: 1px solid red; */
     margin: 3rem 0;
     font-family: 'Nunito';
     font-size: 1.5rem;
@@ -60,10 +64,10 @@
     text-decoration: none;
 }
 .link {
-    padding: .5rem 1rem;
+    padding: 0 1rem;
     border-top: 1px solid var(--secFont);
     border-bottom: 1px solid var(--secFont);
-    margin: 3rem 0;
+    /* margin: 3rem 0; */
     font-family: 'Nunito';
     font-size: 1.5rem;
     font-weight: 800;
@@ -76,7 +80,8 @@
 }
 .contMenu > button {
     border: none;
-    padding: .5em 0;
+    /* border: 1px solid red; */
+    margin: .5em 0;
     font-family: 'Nunito';
     font-size: 1.5rem;
     font-weight: 600;
