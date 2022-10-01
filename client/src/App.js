@@ -11,30 +11,34 @@ import { Toaster } from 'react-hot-toast';
 import NotFound from './pages/NotFound/NotFound';
 import UserLogged from './helpers/UserLogged/UserLooged';
 import Statistics from './pages/Statistics/Statistics';
+import backimg from './media/500x500Circle.png';
 
 function App() {
   const { pathname } = useLocation()
 
   return (
     <div className="App">
+      <div className='backimg'>
+        <img src={backimg} alt='' />
+      </div>
       {
         pathname.toLowerCase() === '/signin' || pathname.toLocaleLowerCase() === '/signup' ?
         <></>
         : <NavBar/>
       }
-    <Routes>
-      <Route path='/' element={<Landing />} />
-      <Route path='/signup' element={<Signup />}/>
-      <Route path='/signin' element={<Signin />}/>
-      <Route element={<UserLogged />} >
-        <Route path='/home' element={<Home />}/>
-        <Route path='/history' element={<History />}/>
-        <Route path='/statistics' element={<Statistics />} />
-      </Route>
-      <Route path='*' element={<NotFound/>} />
-    </Routes>
-    <CookieConsent disableStyles={true} contentClasses='cookieContent' buttonClasses='cookieButton' containerClasses='cookieContainer' >FinnApp use cookies to improve your experience</CookieConsent>
-    <Toaster />
+      <Routes>
+        <Route path='/' element={<Landing />} />
+        <Route path='/signup' element={<Signup />}/>
+        <Route path='/signin' element={<Signin />}/>
+        <Route element={<UserLogged />} >
+          <Route path='/home' element={<Home />}/>
+          <Route path='/history' element={<History />}/>
+          <Route path='/statistics' element={<Statistics />} />
+        </Route>
+        <Route path='*' element={<NotFound/>} />
+      </Routes>
+      <CookieConsent disableStyles={true} contentClasses='cookieContent' buttonClasses='cookieButton' containerClasses='cookieContainer' >FinnApp use cookies to improve your experience</CookieConsent>
+      <Toaster />
     </div>
   );
 }
