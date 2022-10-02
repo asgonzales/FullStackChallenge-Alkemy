@@ -3,7 +3,7 @@
     width: 100%;
     /* margin: 1rem; */
 }
-.contAboutCard > div {
+.divPage, .divInfo {
     /* width: 100%; */
     display: flex;
     flex-direction: column;
@@ -31,4 +31,31 @@
     color: var(--priFont);
     text-align: center;
     
+}
+.divButtons {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.divButtons > a {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.divButtons > a > img {
+    margin: 0;
+    width: 100%;
+    /* height: 100%; */
+    object-fit: contain;
+    transition: all 0.2s ease;
+    filter: brightness(.4) invert(0.2) sepia(1) hue-rotate(200deg) saturate(500%);
+}
+.divButtons > a:hover > img {
+    width: 120%;
 }
