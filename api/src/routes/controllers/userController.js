@@ -55,10 +55,11 @@ const signGoogle = async (req, res) => {
         const newUser = {email, name: given_name}
         // console.log(email)
         const user = await User.findOrCreate({ where: { email: email }, defaults: newUser })
+        const updtaName = await User.update({ name: given_name }, { where: { email: email } })
         // console.log('NUEVO USUARIO', user)
         const token = jwt.sign({ id: user[0].dataValues.id }, KEY_JWT, {expiresIn: '3h'})
         res.cookie('token', token, {sameSite: 'none', secure: true })
-        return res.status(200).json({ token: token, name: user[0].dataValues.name })
+        return res.status(200).json({ token: token, name: given_name })
     } catch (err) {
         // console.log(err)
         return res.status(400).json({ error: err.message })

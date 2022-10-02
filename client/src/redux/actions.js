@@ -56,7 +56,7 @@ export const loginUser = (email, password, navigate) => {
             // console.log(response.data)
             localStorage.setItem('user', JSON.stringify({session: true, name: response.data.name}))
             toast.dismiss('login')
-            toast.success(`Welcome ${response.data.name}!`)
+            toast.success(`Welcome ${response.data.name || ''}!`)
             navigate('/home')
         })
         .catch(err => {
@@ -287,20 +287,20 @@ export const signOut = (navigate) => {
         })
         .then(response => {
             toast.dismiss('signOut')
-            // dispatch({
-            //     type: GET_LAST_RECORDS,
-            //     payload: []
-            // })
-            // dispatch({
-            //     type: GET_RESULTS,
-            //     payload: []
-            // })
-            // dispatch({
-            //     type: GET_BALANCE,
-            //     payload: 0
-            // })
-            // localStorage.removeItem('user')
-            endSession(dispatch)
+            dispatch({
+                type: GET_LAST_RECORDS,
+                payload: []
+            })
+            dispatch({
+                type: GET_RESULTS,
+                payload: []
+            })
+            dispatch({
+                type: GET_BALANCE,
+                payload: 0
+            })
+            localStorage.removeItem('user')
+            // endSession(dispatch)
             navigate('/signin')
             toast.success('Come back soon!')
         })
