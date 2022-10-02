@@ -182,7 +182,8 @@ const getStatistics = async (req, res) => {
         let categoryStats = {}
         
         let whereDataCond = {
-            userId: jwt.verify(token, KEY_JWT).id
+            userId: jwt.verify(token, KEY_JWT).id,
+            isActive: 'true'
         }
 
         let whereCategoriesCond = {}
@@ -248,8 +249,9 @@ const getStatistics = async (req, res) => {
             }
         })
         // min = data[0].mount
-        
+        console.log('DATA', data)
         data.forEach(d => {
+            console.log(d.Category.name, categoryStats[d.Category.name])
             categoryStats[d.Category.name] = {
                 ...categoryStats[d.Category.name],
                 // amount: categoryStats[d.Category.name].amount + 1,
