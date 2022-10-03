@@ -16,6 +16,13 @@ server.use(cors({
     origin: `${CORS_ORIGIN}`,
     credentials: true
 }));
+server.use( (req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', CORS_ORIGIN)
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type')
+    res.setHeader('Access-Control-Allow-Credentials', true)
+    next()
+})
 server.use(cookieParser());
 server.use('/', routes);
 
