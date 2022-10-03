@@ -17,7 +17,10 @@ routes.options('*', cors({
     methods: 'GET, PUT, POST, PATCH, DELETE, OPTIONS',
     allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept, token',
     credentials: true
-}))
+}), (req, res) => {
+    console.log('OPTIONSSSS')
+    return res.status(200).json({ success: 'success'})
+})
 
 routes.use('/operation', operationRoutes)
 routes.use('/user', userRoutes)
