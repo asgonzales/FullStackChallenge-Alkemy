@@ -11,15 +11,15 @@ const { CORS_ORIGIN } = process.env
 
 const server = express();
 
-server.use(morgan('dev'));
-server.use(express.json());
-console.log(CORS_ORIGIN)
 server.use(cors({
     origin: `${CORS_ORIGIN}`,
     methods: 'GET, PUT, POST, PATCH, DELETE, OPTIONS',
-    allowedHeaders: 'X-Requested-With, content-type',
+    allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept',
     credentials: true
 }));
+server.use(morgan('dev'));
+server.use(express.json());
+// console.log(CORS_ORIGIN)
 // server.use( (req, res, next) => {
 //     res.setHeader('Access-Control-Allow-Origin', CORS_ORIGIN)
 //     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
