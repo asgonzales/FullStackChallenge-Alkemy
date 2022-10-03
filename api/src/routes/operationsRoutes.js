@@ -7,8 +7,10 @@ const {
     getLastRecords,
     getTotal,
     deleteOperation,
-    getByFilter
+    getByFilter,
+    getStatistics
 } = require('./controllers/operationController.js');
+const verify = require('./middlewares/userMiddleware.js');
 
 
 
@@ -17,20 +19,21 @@ const {
 
 const operationRoutes = Router()
 
-operationRoutes.get('/', getAllOperation)
+operationRoutes.get('/',verify, getAllOperation)
 
-operationRoutes.post('/', createOperation)
+operationRoutes.post('/', verify, createOperation)
 
-operationRoutes.put('/', updateOperation)
+operationRoutes.put('/', verify, updateOperation)
 
-operationRoutes.delete('/', deleteOperation)
+operationRoutes.delete('/', verify, deleteOperation)
 
-operationRoutes.get('/filter', getByFilter)
+operationRoutes.get('/filter', verify, getByFilter)
 
-operationRoutes.get('/lastrecords', getLastRecords)
+operationRoutes.get('/lastrecords', verify, getLastRecords)
 
-operationRoutes.get('/total', getTotal)
+operationRoutes.get('/total', verify, getTotal)
 
+operationRoutes.get('/statistics', verify, getStatistics)
 
 module.exports = {
     operationRoutes

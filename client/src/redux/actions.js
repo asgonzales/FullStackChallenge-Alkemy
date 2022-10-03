@@ -8,19 +8,20 @@ export const GET_BALANCE = 'GET_BALANCE';
 export const REGISTER_OPERATION = 'REGISTER_OPERATION';
 export const GET_CATEGORIES = 'GET_CATEGORIES';
 export const GET_RESULTS = 'GET_RESULTS';
+export const GET_STATISTICS = 'GET_STATISTICS';
 
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 axios.defaults.withCredentials = true;
 
-export const registerUser = (email, password, navigate) => {
+export const registerUser = (newUser, navigate) => {
     toast.loading('Loading', { id: 'register' })
     return (dispatch) => {
         axios({
             method: 'POST',
             url: `${BASE_URL}/user/signup`,
-            data: {email, password}
+            data: newUser
         })
         .then(response => {
             dispatch({
@@ -33,7 +34,9 @@ export const registerUser = (email, password, navigate) => {
         })
         .catch(err => {
             toast.dismiss('register')
-            toast.error(err.response.data.error)
+            toast.error(err.response.data.error, {
+                id: 'error'
+            })
         })
     }
 }
@@ -50,14 +53,41 @@ export const loginUser = (email, password, navigate) => {
             //     type: LOGIN_USER,
             //     payload: true
             // })
-            localStorage.setItem('user', 'true')
+            // console.log(response.data)
+            localStorage.setItem('user', JSON.stringify({session: true, name: response.data.name}))
             toast.dismiss('login')
-            toast.success('Welcome!')
+            toast.success(`Welcome ${response.data.name || ''}!`)
             navigate('/home')
         })
         .catch(err => {
             toast.dismiss('login')
-            toast.error(err.response.data.error)
+            toast.error(err.response.data.error, {
+                id: 'error'
+            })
+        })
+    }
+}
+export const signGoogle = (credential, navigate) => {
+    toast.loading('Logging In', {
+        id:'signGoogle'
+    })
+    return(dispatch) => {
+        axios({
+            method: 'POST',
+            url:`${BASE_URL}/user/signGoogle`,
+            data: { credential }
+        })
+        .then(response => {
+            localStorage.setItem('user', JSON.stringify({session: true, name: response.data.name}))
+            toast.dismiss('signGoogle')
+            toast.success(`Welcome ${response.data.name}!`)
+            navigate('/home')
+        })
+        .catch(err => {
+            toast.dismiss('signGoogle')
+            toast.error(err.response.data.error, {
+                id: 'error'
+            })
         })
     }
 }
@@ -79,7 +109,11 @@ export const getLastRecords = () => {
             })
             .catch (err => {
                 toast.dismiss('LastRecords')
-                toast.err(err.response.data.error)
+                // console.log('ERROR', err.response.data.sessionEnd)
+                if(err.response.data.sessionEnd) endSession(dispatch)
+                toast.err(err.response.data.error, {
+                    id: 'error'
+                })
             })
     }
 }
@@ -101,7 +135,10 @@ export const getBalance = () => {
         })
         .catch(err => {
             toast.dismiss('LastRecords')
-            toast.error(err.response.data.error)
+            toast.error(err.response.data.error, {
+                id: 'error'
+            })
+            if(err.response.data.sessionEnd) endSession(dispatch)
         })
     }
 }
@@ -128,16 +165,21 @@ export const registerOperation = (operation, closePortal) => {
             })
             .catch(err => {
                 toast.dismiss('registerOperation')
-                toast.error(err.response.data.error)
+                toast.error(err.response.data.error, {
+                    id: 'error'
+                })
+                if(err.response.data.sessionEnd) endSession(dispatch)
             })
     }
 }
-export const getCategories = () => {
+export const getCategories = (type) => {
+    const url = new URL(`${BASE_URL}/category`)
+    url.searchParams.append('type', type)
     return (dispatch) => {
         try {
             axios({
                 method: 'GET',
-                url: `${BASE_URL}/category`
+                url: url.href
             })
             .then(response => {
                 dispatch({
@@ -150,13 +192,19 @@ export const getCategories = () => {
         }
     }
 }
-export const getResults = (type, categoryId) => {
+export const getResults = (type, categoryId, concept, minMount, maxMount, minDate, maxDate) => {
     toast.loading('Searching operations', {
         id: 'getResults'
     })
     const url = new URL(`${BASE_URL}/operation/filter`)
     if(!!type) url.searchParams.append('type', type)
     if(!!categoryId) url.searchParams.append('categoryId', categoryId)
+    if(!!concept) url.searchParams.append('concept', concept)
+    if(!!minMount) url.searchParams.append('minMount', minMount)
+    if(!!maxMount) url.searchParams.append('maxMount', maxMount)
+    if(!!minDate) url.searchParams.append('minDate', minDate)
+    if(!!maxDate) url.searchParams.append('maxDate', maxDate)
+
     return (dispatch) => {
             axios({
                 method: 'GET',
@@ -171,7 +219,10 @@ export const getResults = (type, categoryId) => {
             })
             .catch(err => {
                 toast.dismiss('getResults')
-                toast.error(err.response.data.error)
+                toast.error(err.response.data.error, {
+                    id: 'error'
+                })
+                if(err.response.data.sessionEnd) endSession(dispatch)
             })
     }
 }
@@ -193,7 +244,10 @@ export const updateOperation = (operation, closePortal) => {
             })
             .catch(err => {
                 toast.dismiss('updateOperation')
-                toast.error(err.response.data.error)
+                toast.error(err.response.data.error, {
+                    id: 'error'
+                })
+                if(err.response.data.sessionEnd) endSession(dispatch)
             })
     }
 }
@@ -215,8 +269,10 @@ export const deleteOperation = (operationId, closePortal) => {
             })
             .catch(err => {
                 toast.dismiss('deleteOperation')
-                
-                toast.error(err.response.data.error)
+                toast.error(err.response.data.error, {
+                    id: 'error'
+                })
+                if(err.response.data.sessionEnd) endSession(dispatch)
             })
     }
 }
@@ -244,12 +300,61 @@ export const signOut = (navigate) => {
                 payload: 0
             })
             localStorage.removeItem('user')
+            // endSession(dispatch)
             navigate('/signin')
             toast.success('Come back soon!')
         })
         .catch(err => {
             toast.dismiss('signOut')
-            toast.error(err.response.data.error)
+            toast.error(err.response.data.error, {
+                id: 'error'
+            })
         })
     }
 }
+export const getStatistics = (minDate, maxDate, type, categoryId) => {
+    toast.loading('Getting statistics', {
+        id: 'GET_STATISTICS'
+    })
+    const url = new URL(`${BASE_URL}/operation/statistics`)
+    if(!!minDate) url.searchParams.append('minDate', minDate)
+    if(!!maxDate) url.searchParams.append('maxDate', maxDate)
+    if(!!type) url.searchParams.append('type', type)
+    if(!!categoryId) url.searchParams.append('categoryId', categoryId)
+    return (dispatch) => {
+        axios({
+            method: 'GET',
+            url: url.href
+        })
+        .then(response => {
+            dispatch({
+                type: GET_STATISTICS,
+                payload: response.data
+            })
+            toast.dismiss('GET_STATISTICS')
+        })
+        .catch(err => {
+            toast.dismiss('GET_STATISTICS')
+            toast.error(err.response.data.error)
+            // console.log(err.response.data.error)
+        })
+    }
+}
+
+function endSession (dispatch) {
+    dispatch({
+        type: GET_LAST_RECORDS,
+        payload: []
+    })
+    dispatch({
+        type: GET_RESULTS,
+        payload: []
+    })
+    dispatch({
+        type: GET_BALANCE,
+        payload: 0
+    })
+    localStorage.removeItem('user')
+    window.location.reload(false)
+}
+

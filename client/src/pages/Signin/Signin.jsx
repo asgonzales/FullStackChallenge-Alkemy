@@ -1,5 +1,6 @@
 import style from './Signin.module.css';
-import SignIn from '../../components/SignIn/SignIn.jsx';
+import SignIn from '../../components/Auth/SignIn/SignIn.jsx';
+import SignGoogle from '../../components/Auth/SignGoogle/SignGoogle.jsx';
 import { useEffect } from 'react';
 
 
@@ -19,6 +20,7 @@ export default function Signin () {
     return (
         <div className={style.contSignin}>
             <SignIn />
+            <SignGoogle />
         </div>
     )
 }

@@ -1,0 +1,12 @@
+/* .contSignGoogle { */
+    /* border: 1px solid red; */
+/* } */
+/* .divTitle {
+    border: 1px solid red;
+} */
+.divTitle > h3 {
+    font-family: 'Nunito';
+    font-weight: 600;
+    color: var(--priFont);
+    text-align: center;
+}

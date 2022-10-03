@@ -1,0 +1,57 @@
+.backDeleteOper {
+    width: 100%;
+    min-height: 100vh;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(2px);
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.contDeleteOper {
+    background-color: var(--back);
+    /* border: 1px solid red; */
+    border-radius: 10px;
+    margin: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: bornCard 0.3s linear;
+    box-shadow: 0 0 15px var(--secFont);
+}
+.contDeleteOper > div > h2 {
+    /* border: 1px solid red; */
+    text-align: center;
+    font-family: 'Nunito';
+    color: var(--priFont);
+    margin: 1rem;
+}
+.contDeleteOper > div > button {
+    border: none;
+    border-radius: 10px;
+    background-color: var(--primary);
+    font-family: 'Nunito';
+    color: var(--back);
+    font-size: 1.3em;
+    margin: 1rem;
+    padding: 0.5rem 1rem;
+    transition: all 0.2s ease;
+}
+.contDeleteOper > div > button:hover {
+    cursor: pointer;
+    box-shadow: 0 0 10px var(--primary);
+}
+.contDeleteOper > div > button:active {
+    background-color: var(--secFont);
+    color: white;
+}
+
+@keyframes bornCard {
+    from {
+        transform: translateY(250%)
+    }
+    to {
+        transform: translateY(0%);
+    }
+}

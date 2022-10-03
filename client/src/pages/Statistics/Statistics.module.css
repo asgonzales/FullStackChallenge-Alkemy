@@ -1,18 +1,18 @@
-.contHistory {
+.contStatistics {
+    /* border: 1px solid red; */
     width: 100%;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 .divSearch {
-    width: 100%;
     height: 15rem;
 }
-.divResults {
-    width: 100%;
+.divStats {
+    width: 90%;
 }
-
 
 /* Small devices */
 @media screen and (min-width: 576px) {
@@ -22,7 +22,7 @@
     .divSearch {
         width: 40rem;
     }
-    .divResults {
+    .divStats {
         width: 40rem;
     }
 }

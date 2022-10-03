@@ -13,6 +13,7 @@ import style from './NavBar.module.css';
 
 export default function NavBar () {
     const dispatch = useDispatch()
+    const nameUser = JSON.parse(localStorage.getItem('user'))?.name
 
     const navigate = useNavigate()
     const [openNavBar, setOpenNavBar] = useState(false)
@@ -35,8 +36,11 @@ export default function NavBar () {
                 <div className={style.backgroundNavBar}>
                     <div onClick={handleNavBar} className={style.closeDiv}></div>
                     <div className={style.contMenu}>
+                        <h3>Welcome {nameUser}</h3>
                         <Link onClick={handleNavBar} className={style.link} to='/home'>Home</Link>
                         <Link onClick={handleNavBar} className={style.link} to='/history'>History</Link>
+                        <Link onClick={handleNavBar} className={style.link} to='/statistics'>Statistics</Link>
+                        <Link onClick={handleNavBar} className={style.link} to='/about'>About</Link>
                         <button onClick={handleTheme}>{theme?'Dark mode': 'Light mode'}</button>
                         <button onClick={handlerSignOut}>Sign Out</button>
                     </div>

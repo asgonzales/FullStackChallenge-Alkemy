@@ -18,6 +18,7 @@
   --greenBright: rgba(25, 120, 35, 0.2); */
 }
 body {
+  background-color: var(--back);
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
