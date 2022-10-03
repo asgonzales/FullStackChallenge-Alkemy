@@ -336,7 +336,6 @@ export const getStatistics = (minDate, maxDate, type, categoryId) => {
         .catch(err => {
             toast.dismiss('GET_STATISTICS')
             toast.error(err.response.data.error)
-            // console.log(err.response.data.error)
         })
     }
 }
