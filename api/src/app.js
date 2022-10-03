@@ -15,7 +15,7 @@ const server = express();
 server.use(cors({
     origin: `${CORS_ORIGIN}`,
     methods: 'GET, PUT, POST, PATCH, DELETE, OPTIONS',
-    allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept, token',
+    allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept, token, application/json, text/plain, */*',
     credentials: true
 }));
 
