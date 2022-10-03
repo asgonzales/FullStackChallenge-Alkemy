@@ -11,23 +11,25 @@ const { CORS_ORIGIN } = process.env
 
 const server = express();
 
+server.use(cors())
 server.use(cors({
     origin: `${CORS_ORIGIN}`,
     methods: 'GET, PUT, POST, PATCH, DELETE, OPTIONS',
-    allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept',
+    allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept, token',
     credentials: true
 }));
+
 server.use(morgan('dev'));
 server.use(express.json());
-// console.log(CORS_ORIGIN)
-// server.use( (req, res, next) => {
-//     res.setHeader('Access-Control-Allow-Origin', CORS_ORIGIN)
-//     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
-//     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type')
-//     res.setHeader('Access-Control-Allow-Credentials', true)
-//     next()
-// })
 server.use(cookieParser());
+
+server.use( (req, res, next) => {
+    res.header('Access-Control-Allow-Origin', CORS_ORIGIN)
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, token')
+    res.header('Access-Control-Allow-Credentials', 'true')
+    next()
+})
 server.use('/', routes);
 
 
