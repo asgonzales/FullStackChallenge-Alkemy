@@ -93,14 +93,14 @@ const getByFilter = async (req, res) => {
             ...whereCond,
             date: {
                 ...whereCond.date,
-                [Op.gt]: minDate
+                [Op.gte]: minDate
             }
         }
         if(!!maxDate) whereCond = {
             ...whereCond,
             date: {
                 ...whereCond.date,
-                [Op.lt]: maxDate
+                [Op.lte]: maxDate
             }
         }
         
@@ -212,14 +212,14 @@ const getStatistics = async (req, res) => {
             ...whereDataCond,
             date: {
                 ...whereDataCond.date,
-                [Op.gt]: minDate
+                [Op.gte]: minDate
             }
         }
         if(!!maxDate) whereDataCond = {
             ...whereDataCond,
             date: {
                 ...whereDataCond.date,
-                [Op.lt]: maxDate
+                [Op.lte]: maxDate
             }
         }
         
@@ -241,7 +241,7 @@ const getStatistics = async (req, res) => {
             }
         })
 
-
+        // console.log(whereDataCond)
         const data = await Operation.findAll({
             where: whereDataCond,
             include: {
@@ -250,8 +250,9 @@ const getStatistics = async (req, res) => {
         })
         // min = data[0].mount
         // console.log('DATA', data)
+        // console.log('categoryStats', categoryStats)
         data.forEach(d => {
-            console.log(d.Category.name, categoryStats[d.Category.name])
+            // console.log(d.Category.name, categoryStats[d.Category.name])
             categoryStats[d.Category.name] = {
                 ...categoryStats[d.Category.name],
                 // amount: categoryStats[d.Category.name].amount + 1,
