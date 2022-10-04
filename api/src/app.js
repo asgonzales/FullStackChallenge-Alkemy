@@ -23,13 +23,13 @@ server.use(morgan('dev'));
 server.use(express.json());
 server.use(cookieParser());
 
-server.use( (req, res, next) => {
-    res.header('Access-Control-Allow-Origin', CORS_ORIGIN)
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, token')
-    res.header('Access-Control-Allow-Credentials', 'true')
-    next()
-})
+// server.use( (req, res, next) => {
+//     res.header('Access-Control-Allow-Origin', CORS_ORIGIN)
+//     res.header('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
+//     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, token')
+//     res.header('Access-Control-Allow-Credentials', 'true')
+//     next()
+// })
 
 server.use('/', routes);
 
