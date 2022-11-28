@@ -1,7 +1,7 @@
 ![banner](./media/LargeBanner.jpg)
 
 
-# Instroducción
+# Introducción
 
 Resumen e instalación del proyecto. Este proyecto es un challenge para la aceleración de Full Stack Developer de Alkemy.
 
